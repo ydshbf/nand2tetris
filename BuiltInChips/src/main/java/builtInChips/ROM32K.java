@@ -50,7 +50,7 @@ public class ROM32K extends BuiltInGateWithGUI
             gui.setContents(values);
             gui.setVisibleRows(7);
             gui.setLocation(326,295);
-            gui.setName("ROM:");
+            gui.setName("令存:");
             gui.reset();
             gui.addListener(this);
             gui.addProgramListener(this);
@@ -100,7 +100,7 @@ public class ROM32K extends BuiltInGateWithGUI
     public void programChanged(ProgramEvent event) {
         clearErrorListeners();
         if (gui != null)
-            gui.showMessage("Loading...");
+            gui.showMessage("载...");
 
         try {
             loadProgram(event.getProgramFileName());
@@ -123,7 +123,7 @@ public class ROM32K extends BuiltInGateWithGUI
             HackAssemblerTranslator.getInstance().codeToText(newValue);
             updateValue(newAddress, newValue);
         } catch (AssemblerException ae) {
-            notifyErrorListeners("Illegal instruction");
+            notifyErrorListeners("非法指令");
             if (gui != null)
                 gui.setValueAt(newAddress, values[newAddress]);
         }
@@ -149,7 +149,7 @@ public class ROM32K extends BuiltInGateWithGUI
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index < 0 || index >= values.length)
-            throw new GateException("Illegal index");
+            throw new GateException("非法索引");
     }
 
     public void setValueAt(int index, short value) throws GateException {
@@ -162,12 +162,12 @@ public class ROM32K extends BuiltInGateWithGUI
      * Subclasses may override this method to implement commands.
      */
     public void doCommand(String[] command) throws GateException {
-        if (command[0].toUpperCase().equalsIgnoreCase("LOAD")) {
+        if (command[0].toUpperCase().equalsIgnoreCase("载")) {
             if (command.length != 2)
-                throw new GateException("Illegal number of arguments");
+                throw new GateException("参量数目不对");
 
             if (gui != null)
-                gui.showMessage("Loading...");
+                gui.showMessage("载...");
 
             String fileName = GatesManager.getInstance().getWorkingDir() + "/" + command[1];
 
@@ -183,6 +183,6 @@ public class ROM32K extends BuiltInGateWithGUI
                 gui.hideMessage();
         }
         else
-            throw new GateException("This chip doesn't support this command");
+            throw new GateException("本芯片不支持此令");
     }
 }

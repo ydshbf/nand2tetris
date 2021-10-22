@@ -41,7 +41,7 @@ public class RegisterWithGUI extends BuiltInGateWithGUI implements ComputerPartE
     public RegisterWithGUI() {
         if (GatesManager.getInstance().isChipsGUIEnabled()) {
             gui = new RegisterComponent();
-            gui.setName("Reg:");
+            gui.setName("盒:");
             gui.setLocation(180, 10);
             gui.reset();
             gui.addListener(this);
@@ -92,7 +92,7 @@ public class RegisterWithGUI extends BuiltInGateWithGUI implements ComputerPartE
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index != 0)
-            throw new GateException("Register has no index. Use Register[]");
+            throw new GateException("盒无索引，用盒[]");
     }
 
     public void setValueAt(int index, short value) throws GateException {

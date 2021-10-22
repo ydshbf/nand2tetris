@@ -57,60 +57,60 @@ public class Jack_Sys extends JackOSClass {
         String errorDescription = null;
         switch (errorCode) {
             case SYS_WAIT_NEGATIVE_DURATION:
-                errorDescription = "Duration must be positive";
+                errorDescription = "续时必为正";
                 break;
             case ARRAY_NEW_NONPOSITIVE_SIZE:
-                errorDescription = "Array size must be positive";
+                errorDescription = "队夵必为正";
                 break;
             case MATH_DIVIDE_ZERO:
-                errorDescription = "Division by zero";
+                errorDescription = "除以零";
                 break;
             case MATH_SQRT_NEGATIVE:
-                errorDescription = "Cannot compute square root of a negative number";
+                errorDescription = "负数不能开平方根";
                 break;
             case MEMORY_ALLOC_NONPOSITIVE_SIZE:
-                errorDescription = "Allocated memory size must be positive";
+                errorDescription = "配存夵必为正";
                 break;
             case MEMORY_ALLOC_HEAP_OVERFLOW:
-                errorDescription = "Heap overflow";
+                errorDescription = "堆溢";
                 break;
             case SCREEN_DRAWPIXEL_ILLEGAL_COORDS:
-                errorDescription = "Illegal pixel coordinated";
+                errorDescription = "非法像素座标";
                 break;
             case SCREEN_DRAWLINE_ILLEGAL_COORDS:
-                errorDescription = "Illegal line coordinates";
+                errorDescription = "非法行座标";
                 break;
             case SCREEN_DRAWRECTANGLE_ILLEGAL_COORDS:
-                errorDescription = "Illegal rectangle coordinates";
+                errorDescription = "非法矩座标";
                 break;
             case SCREEN_DRAWCIRCLE_ILLEGAL_CENTER:
-                errorDescription = "Illegal center coordinates";
+                errorDescription = "非法圆心座标";
                 break;
             case SCREEN_DRAWCIRCLE_ILLEGAL_RADIUS:
-                errorDescription = "Illegal radius";
+                errorDescription = "非法半径";
                 break;
             case STRING_NEW_NEGATIVE_LENGTH:
-                errorDescription = "Maximum length must be non-negative";
+                errorDescription = "丄长必非负";
                 break;
             case STRING_CHARAT_ILLEGAL_INDEX:
-                errorDescription = "String index out of bounds";
+                errorDescription = "串号出界";
                 break;
             case STRING_SETCHARAT_ILLEGAL_INDEX:
-                errorDescription = "String index out of bounds";
+                errorDescription = "串号出界";
                 break;
             case STRING_APPENDCHAR_FULL:
-                errorDescription = "String is full";
+                errorDescription = "满串";
                 break;
             case STRING_ERASELASTCHAR_EMPTY:
-                errorDescription = "String is empty";
+                errorDescription = "空串";
                 break;
             case STRING_SETINT_INSUFFICIENT_CAPACITY:
-                errorDescription = "Insufficient string capacity";
+                errorDescription = "串容量不足";
                 break;
             case OUTPUT_MOVECURSOR_ILLEGAL_POSITION:
-                errorDescription = "Illegal cursor location";
+                errorDescription = "非法光标位";
                 break;
         }
-        infiniteLoop("Program Halted: " + errorDescription);
+        infiniteLoop("程停了: " + errorDescription);
     }
 }

@@ -101,9 +101,9 @@ public class FileChooserWindow extends JFrame implements EnterPressedListener {
         fileChooser.addListener(this);
         fileChooser.setWindowLocation(647,3);
         this.getContentPane().setLayout(null);
-        setTitle("Files selection");
+        setTitle("选档");
         fileChooser.setBounds(new Rectangle(5, 2, 482, 48));
-        okButton.setToolTipText("OK");
+        okButton.setToolTipText("好");
         okButton.setIcon(okIcon);
         okButton.setBounds(new Rectangle(124, 64, 63, 44));
         okButton.addActionListener(new ActionListener() {
@@ -117,7 +117,7 @@ public class FileChooserWindow extends JFrame implements EnterPressedListener {
                 cancelButton_actionPerformed(e);
             }
         });
-        cancelButton.setToolTipText("CANCEL");
+        cancelButton.setToolTipText("取消");
         cancelButton.setIcon(cancelIcon);
         this.getContentPane().add(fileChooser, null);
         this.getContentPane().add(cancelButton, null);

@@ -116,7 +116,7 @@ public class CallStackComponent extends JPanel implements CallStackGUI {
         scrollPane.setLocation(0,27);
         setBorder(BorderFactory.createEtchedBorder());
         this.setLayout(null);
-        nameLbl.setText("Call Stack");
+        nameLbl.setText("调栈");
         nameLbl.setBounds(new Rectangle(3, 4, 70, 23));
         nameLbl.setFont(Utilities.labelsFont);
         this.add(scrollPane, null);

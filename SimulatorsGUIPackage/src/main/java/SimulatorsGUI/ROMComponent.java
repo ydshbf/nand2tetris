@@ -60,7 +60,7 @@ public class ROMComponent extends PointedMemoryComponent implements ROMGUI {
     private JTextField messageTxt = new JTextField();
 
     // The possible numeric formats.
-    private String[] format = {"Asm", "Dec", "Hex", "Bin"};
+    private String[] format = {"汇编", "十进制", "十六进制", "二进制"};
 
     // The combo box for choosing the numeric format.
     protected JComboBox romFormat = new JComboBox(format);
@@ -211,7 +211,7 @@ public class ROMComponent extends PointedMemoryComponent implements ROMGUI {
     private void jbInit()  {
         loadButton.setIcon(loadIcon);
         loadButton.setBounds(new Rectangle(97, 2, 31, 25));
-        loadButton.setToolTipText("Load Program");
+        loadButton.setToolTipText("载程");
         loadButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 loadButton_actionPerformed(e);
@@ -251,7 +251,7 @@ public class ROMComponent extends PointedMemoryComponent implements ROMGUI {
      * Opens the file chooser for loading a new program.
      */
     public void loadProgram() {
-        int returnVal = fileChooser.showDialog(this, "Load ROM");
+        int returnVal = fileChooser.showDialog(this, "载令存");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             notifyProgramListeners(ProgramEvent.LOAD,
                                    fileChooser.getSelectedFile().getAbsolutePath());

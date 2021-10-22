@@ -87,10 +87,10 @@ public class Keyboard extends BuiltInGateWithGUI implements KeyListener {
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index != 0)
-            throw new GateException("Keyboard has no index. Use ARegister[]");
+            throw new GateException("键盘无素引. 用址盒[]");
     }
 
     public void setValueAt(int index, short value) throws GateException {
-        throw new GateException("Keyboard is read only");
+        throw new GateException("键盘只读");
     }
 }

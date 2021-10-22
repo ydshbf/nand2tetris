@@ -85,7 +85,7 @@ public class Screen extends BuiltInGateWithGUI {
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index < 0 || index >= values.length)
-            throw new GateException("Illegal index");
+            throw new GateException("非法索引");
     }
 
     public void setValueAt(int index, short value) throws GateException {

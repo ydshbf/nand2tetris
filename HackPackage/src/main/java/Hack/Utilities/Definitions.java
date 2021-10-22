@@ -251,117 +251,117 @@ public class Definitions {
     /**
      * The name of the screen assembly symbol
      */
-    public final static String SCREEN_NAME = "SCREEN";
+    public final static String SCREEN_NAME = "屏";
 
     /**
      * The name of the keybaord assembly symbol
      */
-    public final static String KEYBOARD_NAME = "KBD";
+    public final static String KEYBOARD_NAME = "键盘";
 
     /**
      * The name of the stack pointer assembly symbol
      */
-    public final static String SP_NAME = "SP";
+    public final static String SP_NAME = "栈顶";
 
     /**
      * The name of the local register assembly symbol
      */
-    public final static String LOCAL_POINTER_NAME = "LCL";
+    public final static String LOCAL_POINTER_NAME = "局";
 
     /**
      * The name of the argumet register assembly symbol
      */
-    public final static String ARG_POINTER_NAME = "ARG";
+    public final static String ARG_POINTER_NAME = "参";
 
     /**
      * The name of the "this" register assembly symbol
      */
-    public final static String THIS_POINTER_NAME = "THIS";
+    public final static String THIS_POINTER_NAME = "这";
 
     /**
      * The name of the "that" register assembly symbol
      */
-    public final static String THAT_POINTER_NAME = "THAT";
+    public final static String THAT_POINTER_NAME = "那";
 
     /**
      * The name of the R0 register assembly symbol
      */
-    public final static String R0_NAME = "R0";
+    public final static String R0_NAME = "盒0";
 
     /**
      * The name of the R1 register assembly symbol
      */
-    public final static String R1_NAME = "R1";
+    public final static String R1_NAME = "盒1";
 
     /**
      * The name of the R2 register assembly symbol
      */
-    public final static String R2_NAME = "R2";
+    public final static String R2_NAME = "盒2";
 
     /**
      * The name of the R3 register assembly symbol
      */
-    public final static String R3_NAME = "R3";
+    public final static String R3_NAME = "盒3";
 
     /**
      * The name of the R4 register assembly symbol
      */
-    public final static String R4_NAME = "R4";
+    public final static String R4_NAME = "盒4";
 
     /**
      * The name of the R5 register assembly symbol
      */
-    public final static String R5_NAME = "R5";
+    public final static String R5_NAME = "盒5";
 
     /**
      * The name of the R6 register assembly symbol
      */
-    public final static String R6_NAME = "R6";
+    public final static String R6_NAME = "盒6";
 
     /**
      * The name of the R7 register assembly symbol
      */
-    public final static String R7_NAME = "R7";
+    public final static String R7_NAME = "盒7";
 
     /**
      * The name of the R8 register assembly symbol
      */
-    public final static String R8_NAME = "R8";
+    public final static String R8_NAME = "盒8";
 
     /**
      * The name of the R9 register assembly symbol
      */
-    public final static String R9_NAME = "R9";
+    public final static String R9_NAME = "盒9";
 
     /**
      * The name of the R10 register assembly symbol
      */
-    public final static String R10_NAME = "R10";
+    public final static String R10_NAME = "盒10";
 
     /**
      * The name of the R11 register assembly symbol
      */
-    public final static String R11_NAME = "R11";
+    public final static String R11_NAME = "盒11";
 
     /**
      * The name of the R12 register assembly symbol
      */
-    public final static String R12_NAME = "R12";
+    public final static String R12_NAME = "盒12";
 
     /**
      * The name of the R13 register assembly symbol
      */
-    public final static String R13_NAME = "R13";
+    public final static String R13_NAME = "盒13";
 
     /**
      * The name of the R14 register assembly symbol
      */
-    public final static String R14_NAME = "R14";
+    public final static String R14_NAME = "盒14";
 
     /**
      * The name of the R15 register assembly symbol
      */
-    public final static String R15_NAME = "R15";
+    public final static String R15_NAME = "盒15";
 
     // Key codes
     public static final short NEWLINE_KEY = 128;
@@ -550,7 +550,7 @@ public class Definitions {
             final GitRepositoryState git = GitRepositoryState.getGitRepositoryState();
             return String.format("%s - %s", git.getBuildVersion(), git.getDescribeShort());
         } catch (IOException e) {
-            return "unknown";
+            return "未知故障";
         }
     }
 }

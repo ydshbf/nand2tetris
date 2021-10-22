@@ -31,8 +31,8 @@ import java.awt.event.*;
 public class PartsComponent extends JPanel implements PartsGUI {
 
     // The strings representing a composite and BuiltIn gates.
-    private final static String BUILTIN_GATE  = "BuiltIn";
-    private final static String COMPOSITE_GATE  = "Composite";
+    private final static String BUILTIN_GATE  = "内建";
+    private final static String COMPOSITE_GATE  = "复合";
 
     // The table containing the parts data
     private JTable partsTable;
@@ -135,7 +135,7 @@ public class PartsComponent extends JPanel implements PartsGUI {
         setBorder(BorderFactory.createEtchedBorder());
         scrollPane = new JScrollPane(partsTable);
         scrollPane.setLocation(0, 27);
-        nameLbl.setText("Name :");
+        nameLbl.setText("名 :");
         nameLbl.setBounds(new Rectangle(3, 3, 102, 21));
         nameLbl.setFont(Utilities.labelsFont);
         this.add(scrollPane, null);
@@ -158,7 +158,7 @@ public class PartsComponent extends JPanel implements PartsGUI {
     // An inner class representing the model of the parts table.
     class PartsTableModel extends AbstractTableModel {
 
-        String[] columnNames = {"Chip Name", "Type", "Clocked"};
+        String[] columnNames = {"芯名", "型", "带钟"};
 
         /**
          * Returns the number of columns.

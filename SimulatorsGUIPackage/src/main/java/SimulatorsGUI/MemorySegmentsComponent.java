@@ -67,17 +67,17 @@ public class MemorySegmentsComponent extends JPanel {
     public MemorySegmentsComponent() {
         // creating the segments and giving them names.
         staticSegment = new MemorySegmentComponent();
-        staticSegment.setSegmentName("Static");
+        staticSegment.setSegmentName("静");
         localSegment = new MemorySegmentComponent();
-        localSegment.setSegmentName("Local");
+        localSegment.setSegmentName("局");
         argSegment = new MemorySegmentComponent();
-        argSegment.setSegmentName("Argument");
+        argSegment.setSegmentName("参");
         thisSegment = new MemorySegmentComponent();
-        thisSegment.setSegmentName("This");
+        thisSegment.setSegmentName("这");
         thatSegment = new MemorySegmentComponent();
-        thatSegment.setSegmentName("That");
+        thatSegment.setSegmentName("那");
         tempSegment = new MemorySegmentComponent();
-        tempSegment.setSegmentName("Temp");
+        tempSegment.setSegmentName("暂");
 
         // creating the split panes.
         segmentsSplitPane5 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, thatSegment, tempSegment);

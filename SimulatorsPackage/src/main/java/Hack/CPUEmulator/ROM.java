@@ -75,7 +75,7 @@ public class ROM extends PointedMemory implements ProgramEventListener
         short[] program = null;
 
         if (displayChanges)
-            ((ROMGUI)gui).showMessage("Loading...");
+            ((ROMGUI)gui).showMessage("载...");
 
         try {
             program = HackAssemblerTranslator.loadProgram(fileName, Definitions.ROM_SIZE,
@@ -129,7 +129,7 @@ public class ROM extends PointedMemory implements ProgramEventListener
             HackAssemblerTranslator.getInstance().codeToText(newValue);
             setValueAt(newAddress, newValue, true);
         } catch (AssemblerException ae) {
-            notifyErrorListeners("Illegal instruction");
+            notifyErrorListeners("非法令");
             quietUpdateGUI(newAddress, mem[newAddress]);
         }
     }

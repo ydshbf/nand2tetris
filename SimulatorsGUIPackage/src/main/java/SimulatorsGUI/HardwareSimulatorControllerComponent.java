@@ -133,7 +133,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
 
         fileMenu.removeAll();
 
-        loadChipMenuItem = new JMenuItem("Load Chip",KeyEvent.VK_L);
+        loadChipMenuItem = new JMenuItem("载芯片",KeyEvent.VK_L);
         loadChipMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 loadChipMenuItem_actionPerformed(e);
@@ -154,7 +154,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
         runMenu.add(rewindMenuItem);
         runMenu.addSeparator();
 
-        evalMenuItem = new JMenuItem("Eval",KeyEvent.VK_E);
+        evalMenuItem = new JMenuItem("算",KeyEvent.VK_E);
         evalMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 evalMenuItem_actionPerformed(e);
@@ -162,7 +162,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
         });
         runMenu.add(evalMenuItem);
 
-        tickTockMenuItem = new JMenuItem("Tick Tock",KeyEvent.VK_C);
+        tickTockMenuItem = new JMenuItem("嘀嗒",KeyEvent.VK_C);
         tickTockMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 tickTockMenuItem_actionPerformed(e);
@@ -181,7 +181,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
         loadChipButton.setMaximumSize(new Dimension(39, 39));
         loadChipButton.setMinimumSize(new Dimension(39, 39));
         loadChipButton.setPreferredSize(new Dimension(39, 39));
-        loadChipButton.setToolTipText("Load Chip");
+        loadChipButton.setToolTipText("载芯片");
         loadChipButton.setIcon(loadChipIcon);
         loadChipButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -197,7 +197,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
         tickTockButton.setMaximumSize(new Dimension(39, 39));
         tickTockButton.setMinimumSize(new Dimension(39, 39));
         tickTockButton.setPreferredSize(new Dimension(39, 39));
-        tickTockButton.setToolTipText("Tick Tock");
+        tickTockButton.setToolTipText("嘀嗒");
         tickTockButton.setIcon(tickTockIcon);
         tickTockButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -214,7 +214,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
         evalButton.setMaximumSize(new Dimension(39, 39));
         evalButton.setMinimumSize(new Dimension(39, 39));
         evalButton.setPreferredSize(new Dimension(39, 39));
-        evalButton.setToolTipText("Eval");
+        evalButton.setToolTipText("算");
         evalButton.setIcon(evalIcon);
         evalButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -225,7 +225,7 @@ public class HardwareSimulatorControllerComponent extends ControllerComponent im
 
     // Called when the load chip button is pressed.
     private void loadChipPressed() {
-        int returnVal = chipFileChooser.showDialog(this, "Load Chip");
+        int returnVal = chipFileChooser.showDialog(this, "载芯片");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             notifyControllerListeners(HardwareSimulatorControllerEvent.CHIP_CHANGED, chipFileChooser.getSelectedFile().getAbsoluteFile());
         }

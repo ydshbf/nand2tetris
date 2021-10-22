@@ -67,7 +67,7 @@ public class GateInfoComponent extends JPanel implements GateInfoGUI {
 
     public void setClocked (boolean clocked) {
         if(clocked)
-            chipNameTxt.setText(chipName + " (Clocked) ");
+            chipNameTxt.setText(chipName + " (嘀嗒) "); // Clocked
         else
             chipNameTxt.setText(chipName);
     }
@@ -101,11 +101,11 @@ public class GateInfoComponent extends JPanel implements GateInfoGUI {
 
         this.setLayout(null);
 
-        chipNameLbl.setText("Chip Name :");
+        chipNameLbl.setText("芯名 :");
         chipNameLbl.setBounds(new Rectangle(11, 7, 74, 21));
 
         timeLbl.setBounds(new Rectangle(341, 8, 42, 21));
-        timeLbl.setText("Time :");
+        timeLbl.setText("时间 :");
 
         chipNameTxt.setBackground(SystemColor.info);
         chipNameTxt.setFont(Utilities.thinBigLabelsFont);

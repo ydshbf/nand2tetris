@@ -259,42 +259,42 @@ public class HVMInstructionSet {
     /**
      * Static virtual segment string in VM
      */
-    public final static String STATIC_SEGMENT_VM_STRING = "static";
+    public final static String STATIC_SEGMENT_VM_STRING = "静";
 
     /**
      * Local segment string in VM
      */
-    public final static String LOCAL_SEGMENT_VM_STRING = "local";
+    public final static String LOCAL_SEGMENT_VM_STRING = "局";
 
     /**
      * Arg segment string in VM
      */
-    public final static String ARG_SEGMENT_VM_STRING = "argument";
+    public final static String ARG_SEGMENT_VM_STRING = "参";
 
     /**
      * This segment string in VM
      */
-    public final static String THIS_SEGMENT_VM_STRING = "this";
+    public final static String THIS_SEGMENT_VM_STRING = "这";
 
     /**
      * That segment string in VM
      */
-    public final static String THAT_SEGMENT_VM_STRING = "that";
+    public final static String THAT_SEGMENT_VM_STRING = "那";
 
     /**
      * Temp segment string in VM
      */
-    public final static String TEMP_SEGMENT_VM_STRING = "temp";
+    public final static String TEMP_SEGMENT_VM_STRING = "暂";
 
     /**
      * Const virtual segment string in VM
      */
-    public final static String CONST_SEGMENT_VM_STRING = "constant";
+    public final static String CONST_SEGMENT_VM_STRING = "恒";
 
     /**
      * Pointer virtual segment string in VM
      */
-    public final static String POINTER_SEGMENT_VM_STRING = "pointer";
+    public final static String POINTER_SEGMENT_VM_STRING = "指";
 
     // the single instance
     private static HVMInstructionSet instance;

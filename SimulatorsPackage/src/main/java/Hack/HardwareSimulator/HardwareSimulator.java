@@ -142,7 +142,7 @@ public class HardwareSimulator extends HackSimulator
     }
 
     public String getName() {
-        return "Hardware Simulator";
+        return "硬件仿真器";
     }
 
     /**
@@ -153,7 +153,7 @@ public class HardwareSimulator extends HackSimulator
         String result = null;
 
         if (gate == null)
-            throw new VariableException("cannot get var's value since no gate is currently loaded", varName);
+            throw new VariableException("门电路未装载无变量值", varName);
 
         if (varName.equals(VAR_TIME))
             result = String.valueOf(time) + (clockUp ? "+" : " ");
@@ -175,13 +175,13 @@ public class HardwareSimulator extends HackSimulator
                             throw new VariableException(ge.getMessage(), varName);
                         }
                     } else {
-						throw new VariableException("No such built-in chip used",
+						throw new VariableException("无此内建芯片",
 													gateName);
 					}
                 }
 
                 if (result == null)
-                    throw new VariableException("Unknown variable", varName);
+                    throw new VariableException("未知变量", varName);
             }
         }
 
@@ -224,7 +224,7 @@ public class HardwareSimulator extends HackSimulator
                 index = Integer.parseInt(varName.substring(varName.indexOf("[") + 1,
                                                            varName.indexOf("]")));
             } catch (Exception nfe) {
-                throw new VariableException("Illegal component index", varName);
+                throw new VariableException("非法部件号", varName);
             }
         }
 
@@ -237,7 +237,7 @@ public class HardwareSimulator extends HackSimulator
      */
     public void setValue(String varName, String value) throws VariableException {
         if (gate == null)
-            throw new VariableException("cannot get var's value since no gate is currently loaded", varName);
+            throw new VariableException("门电路未装载无变量值", varName);
 
         short numValue;
 
@@ -245,7 +245,7 @@ public class HardwareSimulator extends HackSimulator
             value = Conversions.toDecimalForm(value);
             numValue = Short.parseShort(value);
         } catch (NumberFormatException nfe) {
-            throw new VariableException("'" + value + "' is not a legal value for variable",
+            throw new VariableException("'" + value + "' 不是变量有效值",
                                         varName);
         }
 
@@ -261,7 +261,7 @@ public class HardwareSimulator extends HackSimulator
                     readOnly = true;
                 else {
                     if (!isLegalWidth(varName, numValue))
-                        throw new VariableException(value + " doesn't fit in the pin's width",
+                        throw new VariableException(value + " 引脚宽度不匹配",
                                                     varName);
                     else
                         node.set(numValue);
@@ -283,18 +283,18 @@ public class HardwareSimulator extends HackSimulator
                             throw new VariableException(ge.getMessage(), varName);
                         }
                     } else {
-						throw new VariableException("No such built-in chip used",
+						throw new VariableException("无此内建芯片",
 													gateName);
                     }
                 }
 
                 if (!found)
-                    throw new VariableException("Unknown variable", varName);
+                    throw new VariableException("未知变量", varName);
             }
         }
 
         if (readOnly)
-            throw new VariableException("Read Only variable", varName);
+            throw new VariableException("只读变量", varName);
 
     }
 
@@ -316,55 +316,55 @@ public class HardwareSimulator extends HackSimulator
     public void doCommand(String[] command)
      throws CommandException, ProgramException, VariableException {
         if (command.length == 0)
-            throw new CommandException("Empty command", command);
+            throw new CommandException("空变量", command);
 
         // execute the appropriate command
         if (command[0].equals(COMMAND_TICK)) {
             if (command.length != 1)
-                throw new CommandException("Illegal number of arguments to command", command);
+                throw new CommandException("令参数不匹配", command);
             else if (gate == null)
-                throw new CommandException("Illegal command since no gate is currently loaded", command);
+                throw new CommandException("未装载门电路非法令", command);
             else if (clockUp)
-                throw new CommandException("Illegal command since clock is already up", command);
+                throw new CommandException("钟波已升非法令", command);
 
             performTick();
         }
         else if (command[0].equals(COMMAND_TOCK)) {
             if (command.length != 1)
-                throw new CommandException("Illegal number of arguments to command", command);
+                throw new CommandException("令参数不匹配", command);
             else if (gate == null)
-                throw new CommandException("Illegal command since no gate is currently loaded", command);
+                throw new CommandException("未装载门电路非法令", command);
             else if (!clockUp)
-                throw new CommandException("Illegal command since clock is already down", command);
+                throw new CommandException("钟波已降非法令", command);
 
             performTock();
         }
         else if (command[0].equals(COMMAND_EVAL)) {
             if (command.length != 1)
-                throw new CommandException("Illegal number of arguments to command", command);
+                throw new CommandException("令参数不匹配", command);
             else if (gate == null)
-                throw new CommandException("Illegal command since no gate is currently loaded", command);
+                throw new CommandException("未装载门电路非法令", command);
 
             performEval();
         }
         else if (command[0].equals(COMMAND_SETVAR)) {
             if (command.length != 3)
-                throw new CommandException("Illegal number of arguments to command", command);
+                throw new CommandException("令参数不匹配", command);
             setValue(command[1], command[2]);
         }
         else if (command[0].equals(COMMAND_LOAD)) {
             if (command.length != 2)
-                throw new CommandException("Illegal number of arguments to command", command);
+                throw new CommandException("令参数不匹配", command);
 
             if (gui != null && gui.getGateInfo() != null)
                 gui.getGateInfo().setChip(command[1]);
 
             try {
                 if (!command[1].endsWith(".hdl"))
-                    throw new CommandException("A .hdl file is expected", command);
+                    throw new CommandException("需.hdl 档", command);
 
                 if (command[1].indexOf("/") >= 0)
-                    throw new CommandException("The gate name must not contain path specification",
+                    throw new CommandException("门电路名不能含路径",
                                                command);
 
                 // use gate name without the .hdl extension
@@ -392,7 +392,7 @@ public class HardwareSimulator extends HackSimulator
             }
 
             if (!found)
-                throw new CommandException("Unknown command or component name", command);
+                throw new CommandException("未知令名或部件名", command);
         }
     }
 
@@ -521,7 +521,7 @@ public class HardwareSimulator extends HackSimulator
         GateClass gateClass = null;
 
         if (gui != null)
-            displayMessage("Loading chip...", false);
+            displayMessage("载芯...", false);
 
         try {
             // clears the gate cache, so all gates will be reloaded
@@ -779,12 +779,12 @@ public class HardwareSimulator extends HackSimulator
     // Throws VariableException if i is negative.
     private static short getIndex(String varName) throws VariableException {
         if (varName.indexOf("]") == -1)
-            throw new VariableException("Missing ']'", varName);
+            throw new VariableException("缺 ']'", varName);
 
         String indexStr = varName.substring(varName.indexOf("[") + 1, varName.indexOf("]"));
         int index = Integer.parseInt(indexStr);
         if (index < 0)
-            throw new VariableException("Illegal variable index", varName);
+            throw new VariableException("非法变量号", varName);
 
         return (short)index;
     }

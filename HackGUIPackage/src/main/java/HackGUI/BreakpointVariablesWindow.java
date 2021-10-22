@@ -57,7 +57,7 @@ public class BreakpointVariablesWindow extends JFrame {
      * Constructing a new BreakpointVariablesWindow.
      */
     public BreakpointVariablesWindow() {
-        super("Breakpoint Variables");
+        super("断点变量");
         listeners = new Vector();
         jbInit();
     }
@@ -129,12 +129,12 @@ public class BreakpointVariablesWindow extends JFrame {
     // Initializes this component.
     private void jbInit() {
         nameLbl.setFont(Utilities.thinLabelsFont);
-        nameLbl.setText("Name :");
+        nameLbl.setText("名 :");
         nameLbl.setBounds(new Rectangle(9, 10, 61, 19));
         this.getContentPane().setLayout(null);
         valueLbl.setBounds(new Rectangle(9, 42, 61, 19));
         valueLbl.setFont(Utilities.thinLabelsFont);
-        valueLbl.setText("Value :");
+        valueLbl.setText("值 :");
         nameTxt.setBounds(new Rectangle(53, 10, 115, 19));
         valueTxt.setBounds(new Rectangle(53, 42, 115, 19));
         nameCombo.setBounds(new Rectangle(180, 10, 124, 19));
@@ -143,7 +143,7 @@ public class BreakpointVariablesWindow extends JFrame {
                 nameCombo_actionPerformed(e);
             }
         });
-        okButton.setToolTipText("Ok");
+        okButton.setToolTipText("好");
         okButton.setIcon(okIcon);
         okButton.setBounds(new Rectangle(61, 74, 63, 44));
         okButton.addActionListener(new ActionListener() {
@@ -157,7 +157,7 @@ public class BreakpointVariablesWindow extends JFrame {
                 cancelButton_actionPerformed(e);
             }
         });
-        cancelButton.setToolTipText("Cancel");
+        cancelButton.setToolTipText("取消");
         cancelButton.setIcon(cancelIcon);
         this.getContentPane().add(nameLbl, null);
         this.getContentPane().add(valueLbl, null);

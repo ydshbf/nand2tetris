@@ -63,9 +63,9 @@ public class CPUEmulatorComponent extends HackSimulatorComponent implements CPUE
         screen = new ScreenComponent();
         keyboard = new KeyboardComponent();
         ram = new PointedMemoryComponent();
-        ram.setName("RAM");
+        ram.setName("内存");
         rom = new ROMComponent();
-        rom.setName("ROM");
+        rom.setName("令存");
         alu = new ALUComponent();
         a = new RegisterComponent();
         d = new RegisterComponent();
@@ -89,9 +89,9 @@ public class CPUEmulatorComponent extends HackSimulatorComponent implements CPUE
 
     // Sets the names of the registers.
     private void setRegistersNames() {
-        a.setName("A");
-        d.setName("D");
-        pc.setName("PC");
+        a.setName("址盒");
+        d.setName("数盒");
+        pc.setName("现令");
     }
 
     public Point getAdditionalDisplayLocation() {

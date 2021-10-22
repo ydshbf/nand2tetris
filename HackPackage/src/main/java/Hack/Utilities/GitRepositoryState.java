@@ -2,7 +2,9 @@ package Hack.Utilities;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.Properties;
 
 class GitRepositoryState {
@@ -16,11 +18,11 @@ class GitRepositoryState {
             final Properties properties = new Properties();
             if (gitProperties != null) {
                 try (InputStream is = gitProperties.openStream()) {
-                    properties.load(is);
+                    properties.load(new InputStreamReader(is, Charset.forName("UTF-8")));
                 }
             } else {
-                properties.setProperty("git.commit.id.describe-short", "unknown");
-                properties.setProperty("git.build.version", "unknown");
+                properties.setProperty("git.commit.id.describe-short", "未知");
+                properties.setProperty("git.build.version", "未知");
             }
 
             gitRepositoryState = new GitRepositoryState(properties);

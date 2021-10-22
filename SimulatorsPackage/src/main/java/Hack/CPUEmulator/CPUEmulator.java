@@ -148,7 +148,7 @@ public class CPUEmulator extends HackSimulator implements ComputerPartErrorEvent
     }
 
     public String getName() {
-        return "CPU Emulator";
+        return "处理器仿真器";
     }
 
     /**

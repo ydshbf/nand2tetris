@@ -135,14 +135,14 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
     public ControllerComponent() {
         messageLbl.setEditable(false);
         listeners = new Vector<ControllerEventListener>();
-        formatCombo = new TitledComboBox("Format:", "Numeric display format",
-                                         new String[]{"Decimal", "Hexa", "Binary"}, 75);
-        additionalDisplayCombo = new TitledComboBox("View:", "View options",
-                                                    new String[]{"Script", "Output", "Compare",
-                                                                 "Screen"}, 80);
-        animationCombo = new TitledComboBox("Animate:", "Animation type",
-                                            new String[]{"Program flow", "Program & data flow",
-                                                         "No animation"}, 135);
+        formatCombo = new TitledComboBox("格式:", "数显格式",
+                                         new String[]{"十进制", "十六进制", "二进制"}, 75);
+        additionalDisplayCombo = new TitledComboBox("视图:", "视图选项",
+                                                    new String[]{"脚本", "输出", "比较",
+                                                                 "屏"}, 80);
+        animationCombo = new TitledComboBox("动画:", "动画类型",
+                                            new String[]{"程流", "程及数流",
+                                                         "无动画"}, 135);
         scriptComponent = new FileDisplayComponent();
         outputComponent = new FileDisplayComponent();
         comparisonComponent = new FileDisplayComponent();
@@ -540,24 +540,24 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
     protected void arrangeMenu() {
 
         // Build the first menu.
-        fileMenu = new JMenu("File");
+        fileMenu = new JMenu("档");
         fileMenu.setMnemonic(KeyEvent.VK_F);
         menuBar.add(fileMenu);
 
-        viewMenu = new JMenu("View");
+        viewMenu = new JMenu("视");
         viewMenu.setMnemonic(KeyEvent.VK_V);
         menuBar.add(viewMenu);
 
-        runMenu = new JMenu("Run");
+        runMenu = new JMenu("跑");
         runMenu.setMnemonic(KeyEvent.VK_R);
         menuBar.add(runMenu);
 
         //Build the second menu.
-        helpMenu = new JMenu("Help");
+        helpMenu = new JMenu("助");
         helpMenu.setMnemonic(KeyEvent.VK_H);
         menuBar.add(helpMenu);
 
-        programMenuItem = new JMenuItem("Load Program", KeyEvent.VK_O);
+        programMenuItem = new JMenuItem("载程", KeyEvent.VK_O);
         programMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 programMenuItem_actionPerformed();
@@ -565,7 +565,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         });
         fileMenu.add(programMenuItem);
 
-        scriptMenuItem = new JMenuItem("Load Script", KeyEvent.VK_P);
+        scriptMenuItem = new JMenuItem("载剧本", KeyEvent.VK_P);
         scriptMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 scriptMenuItem_actionPerformed();
@@ -574,7 +574,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         fileMenu.add(scriptMenuItem);
         fileMenu.addSeparator();
 
-        exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_X);
+        exitMenuItem = new JMenuItem("退", KeyEvent.VK_X);
         exitMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.ALT_MASK));
         exitMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -587,11 +587,11 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         ButtonGroup animationRadioButtons = new ButtonGroup();
 
-        animationSubMenu = new JMenu("Animate");
+        animationSubMenu = new JMenu("动画");
         animationSubMenu.setMnemonic(KeyEvent.VK_A);
         viewMenu.add(animationSubMenu);
 
-        partAnimMenuItem = new JRadioButtonMenuItem("Program flow");
+        partAnimMenuItem = new JRadioButtonMenuItem("程流");
         partAnimMenuItem.setMnemonic(KeyEvent.VK_P);
         partAnimMenuItem.setSelected(true);
         partAnimMenuItem.addActionListener(new ActionListener() {
@@ -602,7 +602,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         animationRadioButtons.add(partAnimMenuItem);
         animationSubMenu.add(partAnimMenuItem);
 
-        fullAnimMenuItem = new JRadioButtonMenuItem("Program & data flow");
+        fullAnimMenuItem = new JRadioButtonMenuItem("程及数流");
         fullAnimMenuItem.setMnemonic(KeyEvent.VK_D);
         fullAnimMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -612,7 +612,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         animationRadioButtons.add(fullAnimMenuItem);
         animationSubMenu.add(fullAnimMenuItem);
 
-        noAnimMenuItem = new JRadioButtonMenuItem("No Animation");
+        noAnimMenuItem = new JRadioButtonMenuItem("无动画");
         noAnimMenuItem.setMnemonic(KeyEvent.VK_N);
         noAnimMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -625,11 +625,11 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         ButtonGroup additionalDisplayRadioButtons = new ButtonGroup();
 
-        additionalDisplaySubMenu = new JMenu("View");
+        additionalDisplaySubMenu = new JMenu("视");
         additionalDisplaySubMenu.setMnemonic(KeyEvent.VK_V);
         viewMenu.add(additionalDisplaySubMenu);
 
-        scriptDisplayMenuItem = new JRadioButtonMenuItem("Script");
+        scriptDisplayMenuItem = new JRadioButtonMenuItem("剧本");
         scriptDisplayMenuItem.setMnemonic(KeyEvent.VK_S);
         scriptDisplayMenuItem.setSelected(true);
         scriptDisplayMenuItem.addActionListener(new ActionListener() {
@@ -640,7 +640,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         additionalDisplayRadioButtons.add(scriptDisplayMenuItem);
         additionalDisplaySubMenu.add(scriptDisplayMenuItem);
 
-        outputMenuItem = new JRadioButtonMenuItem("Output");
+        outputMenuItem = new JRadioButtonMenuItem("输出");
         outputMenuItem.setMnemonic(KeyEvent.VK_O);
         outputMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -650,7 +650,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         additionalDisplayRadioButtons.add(outputMenuItem);
         additionalDisplaySubMenu.add(outputMenuItem);
 
-        compareMenuItem = new JRadioButtonMenuItem("Compare");
+        compareMenuItem = new JRadioButtonMenuItem("比");
         compareMenuItem.setMnemonic(KeyEvent.VK_C);
         compareMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -660,7 +660,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         additionalDisplayRadioButtons.add(compareMenuItem);
         additionalDisplaySubMenu.add(compareMenuItem);
 
-        noAdditionalDisplayMenuItem = new JRadioButtonMenuItem("Screen");
+        noAdditionalDisplayMenuItem = new JRadioButtonMenuItem("屏");
         noAdditionalDisplayMenuItem.setMnemonic(KeyEvent.VK_N);
         noAdditionalDisplayMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -673,11 +673,11 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         ButtonGroup formatRadioButtons = new ButtonGroup();
 
-        numericFormatSubMenu = new JMenu("Format");
+        numericFormatSubMenu = new JMenu("格式");
         numericFormatSubMenu.setMnemonic(KeyEvent.VK_F);
         viewMenu.add(numericFormatSubMenu);
 
-        decMenuItem = new JRadioButtonMenuItem("Decimal");
+        decMenuItem = new JRadioButtonMenuItem("十进制");
         decMenuItem.setMnemonic(KeyEvent.VK_D);
         decMenuItem.setSelected(true);
         decMenuItem.addActionListener(new ActionListener() {
@@ -688,7 +688,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         formatRadioButtons.add(decMenuItem);
         numericFormatSubMenu.add(decMenuItem);
 
-        hexaMenuItem = new JRadioButtonMenuItem("Hexadecimal");
+        hexaMenuItem = new JRadioButtonMenuItem("十六进制");
         hexaMenuItem.setMnemonic(KeyEvent.VK_H);
         hexaMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -698,7 +698,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         formatRadioButtons.add(hexaMenuItem);
         numericFormatSubMenu.add(hexaMenuItem);
 
-        binMenuItem = new JRadioButtonMenuItem("Binary");
+        binMenuItem = new JRadioButtonMenuItem("二进制");
         binMenuItem.setMnemonic(KeyEvent.VK_B);
         binMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -710,7 +710,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         viewMenu.addSeparator();
 
-        singleStepMenuItem = new JMenuItem("Single Step", KeyEvent.VK_S);
+        singleStepMenuItem = new JMenuItem("单步", KeyEvent.VK_S);
         singleStepMenuItem.setAccelerator(KeyStroke.getKeyStroke("F11"));
         singleStepMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -719,7 +719,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         });
         runMenu.add(singleStepMenuItem);
 
-        ffwdMenuItem = new JMenuItem("Run", KeyEvent.VK_F);
+        ffwdMenuItem = new JMenuItem("跑", KeyEvent.VK_F);
         ffwdMenuItem.setAccelerator(KeyStroke.getKeyStroke("F5"));
         ffwdMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -728,7 +728,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         });
         runMenu.add(ffwdMenuItem);
 
-        stopMenuItem = new JMenuItem("Stop", KeyEvent.VK_T);
+        stopMenuItem = new JMenuItem("停", KeyEvent.VK_T);
         stopMenuItem.setAccelerator(KeyStroke.getKeyStroke("shift F5"));
         stopMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -738,7 +738,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         runMenu.add(stopMenuItem);
 
 
-        rewindMenuItem = new JMenuItem("Reset", KeyEvent.VK_R);
+        rewindMenuItem = new JMenuItem("复位", KeyEvent.VK_R);
         rewindMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 rewindMenuItem_actionPerformed();
@@ -748,7 +748,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         runMenu.addSeparator();
 
-        breakpointsMenuItem = new JMenuItem("Breakpoints", KeyEvent.VK_B);
+        breakpointsMenuItem = new JMenuItem("断点", KeyEvent.VK_B);
         breakpointsMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 breakpointsMenuItem_actionPerformed();
@@ -756,7 +756,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         });
         runMenu.add(breakpointsMenuItem);
 
-        profilerMenuItem = new JMenuItem("Profiler", KeyEvent.VK_I);
+        profilerMenuItem = new JMenuItem("析器", KeyEvent.VK_I);
         profilerMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -766,7 +766,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         profilerMenuItem.setEnabled(false);
         runMenu.add(profilerMenuItem);
 
-        usageMenuItem = new JMenuItem("Usage", KeyEvent.VK_U);
+        usageMenuItem = new JMenuItem("用法", KeyEvent.VK_U);
         usageMenuItem.setAccelerator(KeyStroke.getKeyStroke("F1"));
         usageMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -775,7 +775,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         });
         helpMenu.add(usageMenuItem);
 
-        aboutMenuItem = new JMenuItem("About ...", KeyEvent.VK_A);
+        aboutMenuItem = new JMenuItem("关于 ...", KeyEvent.VK_A);
         aboutMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 aboutMenuItem_actionPerformed();
@@ -787,7 +787,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
     // called when the load script button is pressed.
     private void scriptPressed() {
-        int returnVal = fileChooser.showDialog(this, "Load Script");
+        int returnVal = fileChooser.showDialog(this, "载剧本");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             notifyControllerListeners(ControllerEvent.SCRIPT_CHANGE, fileChooser.getSelectedFile().getAbsoluteFile());
             scriptComponent.setContents(fileChooser.getSelectedFile().getAbsolutePath());
@@ -801,9 +801,9 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
 
         Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 
-        JLabel slowLabel = new JLabel("Slow");
+        JLabel slowLabel = new JLabel("慢");
         slowLabel.setFont(Utilities.thinLabelsFont);
-        JLabel fastLabel = new JLabel("Fast");
+        JLabel fastLabel = new JLabel("快");
         fastLabel.setFont(Utilities.thinLabelsFont);
         labelTable.put(1, slowLabel);
         labelTable.put(5, fastLabel);
@@ -820,7 +820,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         speedSlider.setBorder(BorderFactory.createEmptyBorder(0,0,5,0));
         speedSlider.setPreferredSize(new Dimension(95, 50));
         speedSlider.setMinimumSize(new Dimension(95, 50));
-        speedSlider.setToolTipText("Speed");
+        speedSlider.setToolTipText("速");
         speedSlider.setMaximumSize(new Dimension(95, 50));
 
         final Dimension buttonSize = new Dimension(39, 39);
@@ -834,13 +834,13 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         loadProgramButton.setMinimumSize(buttonSize);
         loadProgramButton.setPreferredSize(buttonSize);
         loadProgramButton.setSize(buttonSize);
-        loadProgramButton.setToolTipText("Load Program");
+        loadProgramButton.setToolTipText("载程");
         loadProgramButton.setIcon(loadProgramIcon);
 
         ffwdButton.setMaximumSize(buttonSize);
         ffwdButton.setMinimumSize(buttonSize);
         ffwdButton.setPreferredSize(buttonSize);
-        ffwdButton.setToolTipText("Run");
+        ffwdButton.setToolTipText("跑");
         ffwdButton.setIcon(ffwdIcon);
         ffwdButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -856,13 +856,13 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         stopButton.setMaximumSize(buttonSize);
         stopButton.setMinimumSize(buttonSize);
         stopButton.setPreferredSize(buttonSize);
-        stopButton.setToolTipText("Stop");
+        stopButton.setToolTipText("停");
         stopButton.setIcon(stopIcon);
 
         rewindButton.setMaximumSize(buttonSize);
         rewindButton.setMinimumSize(buttonSize);
         rewindButton.setPreferredSize(buttonSize);
-        rewindButton.setToolTipText("Reset");
+        rewindButton.setToolTipText("复位");
         rewindButton.setIcon(rewindIcon);
         rewindButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -873,7 +873,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         scriptButton.setMaximumSize(buttonSize);
         scriptButton.setMinimumSize(buttonSize);
         scriptButton.setPreferredSize(buttonSize);
-        scriptButton.setToolTipText("Load Script");
+        scriptButton.setToolTipText("载剧本");
         scriptButton.setIcon(scriptIcon);
         scriptButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -889,7 +889,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         breakButton.setMaximumSize(buttonSize);
         breakButton.setMinimumSize(buttonSize);
         breakButton.setPreferredSize(buttonSize);
-        breakButton.setToolTipText("Open breakpoint panel");
+        breakButton.setToolTipText("开断点面板");
         breakButton.setIcon(breakIcon);
 
         breakpointWindow.addBreakpointListener(this);
@@ -903,7 +903,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         singleStepButton.setMinimumSize(buttonSize);
         singleStepButton.setPreferredSize(buttonSize);
         singleStepButton.setSize(buttonSize);
-        singleStepButton.setToolTipText("Single Step");
+        singleStepButton.setToolTipText("单步");
         singleStepButton.setIcon(singleStepIcon);
 
         stepOverButton.addActionListener(new ActionListener() {
@@ -915,7 +915,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         stepOverButton.setMinimumSize(buttonSize);
         stepOverButton.setPreferredSize(buttonSize);
         stepOverButton.setSize(buttonSize);
-        stepOverButton.setToolTipText("Step Over");
+        stepOverButton.setToolTipText("走过");
         stepOverButton.setIcon(stepOverIcon);
 
         animationCombo.addActionListener(new java.awt.event.ActionListener() {

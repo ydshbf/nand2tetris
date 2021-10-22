@@ -346,8 +346,8 @@ class VMProgram extends InteractiveComputerPart implements ProgramEventListener 
 
                     final byte opCode = instructionSet.instructionStringToCode(instructionName);
                     if (opCode == HVMInstructionSet.UNKNOWN_INSTRUCTION)
-                        throw new ProgramException("in line " + lineNumber +
-                                                   ": unknown instruction - " + instructionName);
+                        throw new ProgramException("行 " + lineNumber +
+                                                   ": 未知令 - " + instructionName);
 
                     switch (opCode) {
                         case HVMInstructionSet.PUSH_CODE:

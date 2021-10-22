@@ -198,7 +198,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
      * Opens the program file chooser for loading a program.
      */
     public void loadProgram() {
-        int returnVal = fileChooser.showDialog(this, "Load Program");
+        int returnVal = fileChooser.showDialog(this, "载程");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             notifyProgramListeners(ProgramEvent.LOAD,
                                    fileChooser.getSelectedFile().getAbsolutePath());
@@ -259,10 +259,10 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
      * Implementing the action of pressing the clear button.
      */
     public void clearButton_actionPerformed(ActionEvent e) {
-        Object[] options = {"Yes", "No","Cancel"};
+        Object[] options = {"是", "否","取消"};
         int pressedButtonValue = JOptionPane.showOptionDialog(this.getParent(),
-            "Are you sure you want to clear the program?",
-            "Warning Message",
+            "确定要清除程序?",
+            "警告",
             JOptionPane.YES_NO_CANCEL_OPTION,
             JOptionPane.WARNING_MESSAGE,
             null,
@@ -305,7 +305,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
         programTable.getTableHeader().setResizingAllowed(false);
         scrollPane = new JScrollPane(programTable);
         scrollPane.setLocation(0,27);
-        browseButton.setToolTipText("Load Program");
+        browseButton.setToolTipText("载程");
         browseButton.setIcon(browseIcon);
         browseButton.setBounds(new Rectangle(119, 2, 31, 24));
         browseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +322,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
         messageTxt.setBounds(new Rectangle(91, 2, 132, 23));
         messageTxt.setVisible(false);
 
-        searchButton.setToolTipText("Search");
+        searchButton.setToolTipText("找");
         searchButton.setIcon(searchIcon);
         searchButton.setBounds(new Rectangle(188, 2, 31, 24));
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +332,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
         });
         this.setForeground(Color.lightGray);
         this.setLayout(null);
-        nameLbl.setText("Program");
+        nameLbl.setText("程");
         nameLbl.setBounds(new Rectangle(5, 5, 73, 20));
         nameLbl.setFont(Utilities.labelsFont);
 
@@ -343,7 +343,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
         });
         clearButton.setBounds(new Rectangle(154, 2, 31, 24));
         clearButton.setIcon(clearIcon);
-        clearButton.setToolTipText("Clear");
+        clearButton.setToolTipText("除");
         this.add(scrollPane, null);
         this.add(nameLbl, null);
         this.add(searchButton, null);
@@ -435,7 +435,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
             else {
                 HVMInstruction currentInstruction = instructions[row];
                 String op = (currentInstruction.getFormattedStrings())[0];
-                if (op.equals("function") && (column == 1 || column == 2))
+                if (op.equals("函") && (column == 1 || column == 2))
                     setBackground(new Color(190,171,210));
             }
 
@@ -451,12 +451,12 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
 	 */
 	public boolean confirmBuiltInAccess() {
 		String message =
-			"No implementation was found for some functions which are called in the VM code.\n" +
-			"The VM Emulator provides built-in implementations for the OS functions.\n" +
-			"If available, should this built-in implementation be used for functions which were not implemented in the VM code?";
+			"虚拟机代码内有些函式未实现.\n" +
+			"虚拟机内含操作系统函式实现.\n" +
+			"应优先使用";
 		return (JOptionPane.showConfirmDialog(this.getParent(),
 											  message,
-											  "Confirmation Message",
+											  "确认信",
 											  JOptionPane.YES_NO_OPTION,
 											  JOptionPane.QUESTION_MESSAGE) ==
 				JOptionPane.YES_OPTION);
@@ -468,7 +468,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
 	public void notify(String message) {
 		JOptionPane.showMessageDialog(this.getParent(),
 									  message,
-									  "Information Message",
+									  "信息",
 									  JOptionPane.INFORMATION_MESSAGE);
 	}
 }

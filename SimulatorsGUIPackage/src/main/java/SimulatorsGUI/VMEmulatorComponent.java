@@ -73,12 +73,12 @@ public class VMEmulatorComponent extends HackSimulatorComponent implements VMEmu
         screen = new ScreenComponent();
         keyboard = new KeyboardComponent();
         ram = new LabeledMemoryComponent();
-        ram.setName("RAM");
+        ram.setName("内存");
         callStack = new CallStackComponent();
         program = new ProgramComponent();
         segments = new MemorySegmentsComponent();
         workingStack = new TrimmedValuesOnlyAbsoluteMemorySegmentComponent();
-        workingStack.setSegmentName("Stack");
+        workingStack.setSegmentName("栈");
         stack = new AbsolutePointedMemorySegmentComponent();
         calculator = new StackCalculator();
         setSegmentsRam();
@@ -239,7 +239,7 @@ public class VMEmulatorComponent extends HackSimulatorComponent implements VMEmu
 
     // Sets the name of the stack.
     private void setStackName() {
-        stack.setSegmentName("Global Stack");
+        stack.setSegmentName("全局栈");
     }
 
     // Initialization of this component.

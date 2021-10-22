@@ -55,9 +55,9 @@ public class ControllerFileChooser extends JFrame {
         jbInit();
 
         // Sets the names of the file chooser components.
-        scriptFileChooser.setName("Script File :");
-        outputFileChooser.setName("Output File :");
-        comparisonFileChooser.setName("Comparison File :");
+        scriptFileChooser.setName("剧本 :");
+        outputFileChooser.setName("出档 :");
+        comparisonFileChooser.setName("比档 :");
     }
 
     // Shows the controller's file chooser
@@ -127,11 +127,11 @@ public class ControllerFileChooser extends JFrame {
     // Initialization this component
     private void jbInit() {
         this.getContentPane().setLayout(null);
-        setTitle("Files selection");
+        setTitle("选档");
         scriptFileChooser.setBounds(new Rectangle(5, 2, 485, 48));
         outputFileChooser.setBounds(new Rectangle(5, 38, 485, 48));
         comparisonFileChooser.setBounds(new Rectangle(5, 74, 485, 48));
-        okButton.setToolTipText("OK");
+        okButton.setToolTipText("好");
         okButton.setIcon(okIcon);
         okButton.setBounds(new Rectangle(123, 134, 63, 44));
         okButton.addActionListener(new ActionListener() {
@@ -145,7 +145,7 @@ public class ControllerFileChooser extends JFrame {
                 cancelButton_actionPerformed(e);
             }
         });
-        cancelButton.setToolTipText("CANCEL");
+        cancelButton.setToolTipText("取消");
         cancelButton.setIcon(cancelIcon);
         this.getContentPane().add(scriptFileChooser, null);
         this.getContentPane().add(outputFileChooser, null);

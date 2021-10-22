@@ -178,7 +178,7 @@ public class PartPinsComponent extends PinsComponent implements PartPinsGUI {
     // An inner class representing the model of the breakpoint table.
     class PartPinsTableModel extends AbstractTableModel {
 
-        String[] columnNames = {"Part pin", "Gate pin", "Value"};
+        String[] columnNames = {"部件脚", "门脚", "值"};
 
         /**
          * Returns the number of columns.
@@ -238,7 +238,7 @@ public class PartPinsComponent extends PinsComponent implements PartPinsGUI {
                 notifyListeners((short)row,partPins[row].value);
             }
             catch(NumberFormatException nfe) {
-                notifyErrorListeners("Illegal value");
+                notifyErrorListeners("非法值");
                 valuesStr[row] = Format.translateValueToString(partPins[row].value, dataFormat);
             }
             repaint();
@@ -286,7 +286,7 @@ public class PartPinsComponent extends PinsComponent implements PartPinsGUI {
     private void jbInit()  {
         partNameLbl.setFont(Utilities.bigLabelsFont);
         partNameLbl.setHorizontalAlignment(SwingConstants.CENTER);
-        partNameLbl.setText("keyboard");
+        partNameLbl.setText("键盘");
         partNameLbl.setForeground(Color.black);
         partNameLbl.setBounds(new Rectangle(62, 10, 102, 21));
         this.add(partNameLbl, null);

@@ -55,6 +55,6 @@ public class VMFileFilter extends FileFilter {
      * The description of this filter
      */
     public String getDescription() {
-        return "VM Files / Dirs";
+        return "虚拟机档 / 目录";
     }
 }

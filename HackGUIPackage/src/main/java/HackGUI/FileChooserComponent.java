@@ -60,7 +60,7 @@ public class FileChooserComponent extends JPanel {
         jbInit();
         fileChooserFrame.setSize(440,250);
         fileChooserFrame.setLocation(250,250);
-        fileChooserFrame.setTitle("Choose a file :");
+        fileChooserFrame.setTitle("选档 :");
         fileChooserFrame.getContentPane().add(fc);
     }
 
@@ -161,7 +161,7 @@ public class FileChooserComponent extends JPanel {
     // Initialization of this component.
     private void jbInit() {
         fileTypeName.setFont(Utilities.thinLabelsFont);
-        fileTypeName.setText("File Type: ");
+        fileTypeName.setText("档型: ");
         fileTypeName.setBounds(new Rectangle(10, 10, 104, 26));
         this.setLayout(null);
         fileName.setDisabledTextColor(Color.black);
@@ -171,7 +171,7 @@ public class FileChooserComponent extends JPanel {
                 fileName_actionPerformed(e);
             }
         });
-        browseButton.setToolTipText("Load File");
+        browseButton.setToolTipText("载档");
         browseButton.setIcon(load);
         browseButton.setBounds(new Rectangle(351, 12, 46, 24));
         browseButton.addActionListener(new ActionListener() {
@@ -190,7 +190,7 @@ public class FileChooserComponent extends JPanel {
      * Implementing the action of pressing the browse button.
      */
     public void browseButton_actionPerformed(ActionEvent e) {
-        int returnVal = fc.showDialog(FileChooserComponent.this, "Select file");
+        int returnVal = fc.showDialog(FileChooserComponent.this, "选档");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             fileName.setText(file.getAbsolutePath());

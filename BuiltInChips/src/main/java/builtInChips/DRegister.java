@@ -29,7 +29,7 @@ public class DRegister extends RegisterWithGUI {
      */
     public DRegister() {
         if (gui != null) {
-            gui.setName("D:");
+            gui.setName("数盒:");
             gui.setLocation(180,442);
         }
     }

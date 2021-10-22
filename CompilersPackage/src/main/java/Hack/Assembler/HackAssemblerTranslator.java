@@ -118,7 +118,7 @@ public class HackAssemblerTranslator {
     public short getExpByText(String text) throws AssemblerException {
         Short code = (Short)expToCode.get(text);
         if (code == null)
-            throw new AssemblerException("Illegal exp: " + text);
+            throw new AssemblerException("非法式: " + text);
         return code.shortValue();
     }
 
@@ -129,7 +129,7 @@ public class HackAssemblerTranslator {
     public String getExpByCode(short code) throws AssemblerException {
         String result = (String)expToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("Illegal exp: " + code);
+            throw new AssemblerException("非法式: " + code);
         return result;
     }
 
@@ -140,7 +140,7 @@ public class HackAssemblerTranslator {
     public short getDestByText(String text) throws AssemblerException {
         Short code = (Short)destToCode.get(text);
         if (code == null)
-            throw new AssemblerException("Illegal dest: " + text);
+            throw new AssemblerException("非法目标: " + text);
         return code.shortValue();
     }
 
@@ -151,7 +151,7 @@ public class HackAssemblerTranslator {
     public String getDestByCode(short code) throws AssemblerException {
         String result = (String)destToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("Illegal dest: " + code);
+            throw new AssemblerException("非法目标: " + code);
         return result;
     }
 
@@ -162,7 +162,7 @@ public class HackAssemblerTranslator {
     public short getJmpByText(String text) throws AssemblerException {
         Short code = (Short)jmpToCode.get(text);
         if (code == null)
-            throw new AssemblerException("Illegal jmp: " + text);
+            throw new AssemblerException("非法跳: " + text);
         return code.shortValue();
     }
 
@@ -173,7 +173,7 @@ public class HackAssemblerTranslator {
     public String getJmpByCode(short code) throws AssemblerException {
         String result = (String)jmpToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("Illegal jmp: " + code);
+            throw new AssemblerException("非法跳: " + code);
         return result;
     }
 
@@ -194,7 +194,7 @@ public class HackAssemblerTranslator {
                 try {
                     code = Short.parseShort(input.token());
                 } catch (NumberFormatException nfe) {
-                    throw new AssemblerException("A numeric value is expected");
+                    throw new AssemblerException("需数值");
                 }
             }
             else { // compute-store-jump command
@@ -206,7 +206,7 @@ public class HackAssemblerTranslator {
                 if (input.isToken("=")) {
                     Short dest = (Short)destToCode.get(firstToken);
                     if (dest == null)
-                        throw new AssemblerException("Destination expected");
+                        throw new AssemblerException("需目标");
 
                     destCode = dest.shortValue();
                     input.advance(true);
@@ -220,7 +220,7 @@ public class HackAssemblerTranslator {
                     exp = (Short)expToCode.get(input.token());
 
                 if (exp == null)
-                    throw new AssemblerException("Expression expected");
+                    throw new AssemblerException("需式");
 
                 expCode = exp.shortValue();
                 input.advance(false);
@@ -232,7 +232,7 @@ public class HackAssemblerTranslator {
                 if (!input.isEnd()) {
                     Short jmp = (Short)jmpToCode.get(input.token());
                     if (jmp == null)
-                        throw new AssemblerException("Jump directive expected");
+                        throw new AssemblerException("需跳令");
 
                     jmpCode = jmp.shortValue();
                     input.ensureEnd();
@@ -242,7 +242,7 @@ public class HackAssemblerTranslator {
             }
 
         } catch (IOException ioe) {
-            throw new AssemblerException("Error while parsing assembly line");
+            throw new AssemblerException("分析汇编代行出错");
         } catch (HackTranslatorException hte) {
             throw new AssemblerException(hte.getMessage());
         }
@@ -300,7 +300,7 @@ public class HackAssemblerTranslator {
 
         File file = new File(fileName);
         if (!file.exists())
-            throw new AssemblerException(fileName + " doesn't exist");
+            throw new AssemblerException(fileName + " 不存在");
 
         if (fileName.endsWith(".hack")) {
             memory = new short[size];
@@ -317,12 +317,12 @@ public class HackAssemblerTranslator {
                     short value = 0;
 
                     if (pc >= size)
-                        throw new AssemblerException("Program too large");
+                        throw new AssemblerException("程序太大");
 
                     try {
                         value = (short)Conversions.binaryToInt(line);
                     } catch (NumberFormatException nfe) {
-                        throw new AssemblerException("Illegal character");
+                        throw new AssemblerException("非法字");
                     }
 
                     memory[pc++] = value;
@@ -330,7 +330,7 @@ public class HackAssemblerTranslator {
 
                 reader.close();
             } catch (IOException ioe) {
-                throw new AssemblerException("IO error while reading " + fileName);
+                throw new AssemblerException("读IO故障  " + fileName);
             }
         }
         else if (fileName.endsWith(".asm")) {
@@ -342,7 +342,7 @@ public class HackAssemblerTranslator {
             }
         }
         else
-            throw new AssemblerException(fileName + " is not a .hack or .asm file");
+            throw new AssemblerException(fileName + " 不是 .hack 或 .asm 档");
 
         return memory;
     }

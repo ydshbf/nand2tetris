@@ -82,7 +82,7 @@ public class HackAssembler extends HackTranslator {
     }
 
     protected String getName() {
-        return "Assembler";
+        return "汇编器";
     }
 
     protected void init(int size, short nullValue) {
@@ -94,12 +94,12 @@ public class HackAssembler extends HackTranslator {
     // if not legal.
     private void checkComparisonFile(String fileName) throws HackTranslatorException {
         if (!fileName.endsWith("." + getDestinationExtension()))
-            throw new HackTranslatorException(fileName + " is not a ." + getDestinationExtension()
-                                              + " file");
+            throw new HackTranslatorException(fileName + " 不是 ." + getDestinationExtension()
+                                              + " 档");
 
         File file = new File(fileName);
         if (!file.exists())
-            throw new HackTranslatorException("File " + fileName + " does not exist");
+            throw new HackTranslatorException("档 " + fileName + " 不存在");
     }
 
     protected void restartCompilation() {
@@ -124,17 +124,17 @@ public class HackAssembler extends HackTranslator {
                 comparisonProgram = new short[comp.getNumberOfLines()];
                 for (int i = 0; i < comp.getNumberOfLines(); i++) {
 					if (comp.getLineAt(i).length() != Definitions.BITS_PER_WORD) {
-						throw new HackTranslatorException("Error in file "+comparisonFileName+": Line "+i+" does not contain exactly "+Definitions.BITS_PER_WORD+" characters");
+						throw new HackTranslatorException("障于档 "+comparisonFileName+": 行 "+i+" 未确含 "+Definitions.BITS_PER_WORD+" 字符");
 					}
 					try {
 						comparisonProgram[i] = (short)Conversions.binaryToInt(comp.getLineAt(i));
 					} catch (NumberFormatException nfe) {
-						throw new HackTranslatorException("Error in file "+comparisonFileName+": Line "+i+" does not contain only 1/0 characters");
+						throw new HackTranslatorException("障于档 "+comparisonFileName+": 行 "+i+" 未只含 1/0 ");
 					}
 				}
             }
         } catch (IOException ioe) {
-            throw new HackTranslatorException("Error reading from file " + comparisonFileName);
+            throw new HackTranslatorException("读档" + comparisonFileName + "出错");
         }
     }
 
@@ -162,7 +162,7 @@ public class HackAssembler extends HackTranslator {
                         label = input.token();
                         input.advance(true);
                         if (!input.isToken(")"))
-                            error("')' expected");
+                            error("期望')' ");
 
                         input.ensureEnd();
 
@@ -177,7 +177,7 @@ public class HackAssembler extends HackTranslator {
 
             sourceReader.close();
         } catch (IOException ioe) {
-            throw new HackTranslatorException("Error reading from file " + sourceFileName);
+            throw new HackTranslatorException("读档 " + sourceFileName +"出错");
         }
     }
 
@@ -191,7 +191,7 @@ public class HackAssembler extends HackTranslator {
             super.successfulCompilation();
         else {
             if (gui != null)
-                ((HackAssemblerGUI)gui).displayMessage("File compilation & comparison succeeded", false);
+                ((HackAssemblerGUI)gui).displayMessage("档编译对比成功", false);
         }
     }
 
@@ -226,7 +226,7 @@ public class HackAssembler extends HackTranslator {
             }
 
             if (!compare)
-                throw new HackTranslatorException("Comparison failure");
+                throw new HackTranslatorException("比对失败");
         }
 
         return compiledRange;
@@ -320,7 +320,7 @@ public class HackAssembler extends HackTranslator {
                             if (openAddressPos != lastPos || openAddressPos > closeAddressPos ||
                                 openAddressPos + 1 == closeAddressPos)
                                 throw new AssemblerException(
-                                    "Illegal use of the [] notation");
+                                    "非法使用 [] ");
 
                             String address = line.substring(openAddressPos + 1, closeAddressPos);
                             compileLine("@" + address);
@@ -333,7 +333,7 @@ public class HackAssembler extends HackTranslator {
                 }
             }
         } catch (IOException ioe) {
-            throw new HackTranslatorException("Error reading from file " + sourceFileName);
+            throw new HackTranslatorException("读档 " + sourceFileName+"出错");
         } catch (AssemblerException ae) {
             throw new HackTranslatorException(ae.getMessage(), sourcePC);
         }

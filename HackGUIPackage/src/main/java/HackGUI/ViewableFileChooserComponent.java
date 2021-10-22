@@ -57,7 +57,7 @@ public class ViewableFileChooserComponent extends FileChooserComponent {
     public void setFileContent() {
         contentFile = new File(getFileName());
         window.setContent(contentFile);
-        window.setTitle("File: " + contentFile);
+        window.setTitle("档: " + contentFile);
     }
 
     /**
@@ -99,7 +99,7 @@ public class ViewableFileChooserComponent extends FileChooserComponent {
 
     // Initializations
     private void jbInit() {
-        viewCheckBox.setText("View File");
+        viewCheckBox.setText("阅档");
         viewCheckBox.setFont(Utilities.thinLabelsFont);
         viewCheckBox.setBounds(new Rectangle(407, 12, 76, 23));
         viewCheckBox.addItemListener(new ItemListener() {
@@ -116,7 +116,7 @@ public class ViewableFileChooserComponent extends FileChooserComponent {
      */
     public void viewCheckBox_itemStateChanged(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
-            window.setTitle("Loading...");
+            window.setTitle("载...");
             window.setVisible(true);
             setFileContent();
         }

@@ -64,6 +64,6 @@ public class ROMFileFilter extends FileFilter {
      * The description of this filter
      */
     public String getDescription() {
-        return "HACK / ASM Files";
+        return "高语/汇编档";
     }
 }

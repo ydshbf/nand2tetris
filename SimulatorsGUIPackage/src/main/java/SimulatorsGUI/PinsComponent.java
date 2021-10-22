@@ -459,7 +459,7 @@ public class PinsComponent extends JPanel implements PinsGUI, MouseListener, Pin
         binary.setVisible(false);
         binary.addListener(this);
         determineColumnWidth();
-        nameLbl.setText("Name :");
+        nameLbl.setText("名 :");
         nameLbl.setBounds(new Rectangle(3, 3, 102, 21));
         nameLbl.setFont(Utilities.labelsFont);
         pinsTable.setFont(Utilities.valueFont);
@@ -481,7 +481,7 @@ public class PinsComponent extends JPanel implements PinsGUI, MouseListener, Pin
 
      // An inner class representing the model of the breakpoint table.
     class PinsTableModel extends AbstractTableModel {
-        String[] columnNames = {"Name", "Value"};
+        String[] columnNames = {"名", "值"};
 
         /**
          * Returns the number of columns.
@@ -545,7 +545,7 @@ public class PinsComponent extends JPanel implements PinsGUI, MouseListener, Pin
                     notifyListeners((short)row,pins[row].value);
                 }
                 catch(NumberFormatException nfe) {
-                    notifyErrorListeners("Illegal value");
+                    notifyErrorListeners("非法值");
                     valueStr[row] = Format.translateValueToString(pins[row].value, dataFormat);
                 }
                 repaint();

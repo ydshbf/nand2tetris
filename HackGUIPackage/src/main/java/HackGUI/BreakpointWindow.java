@@ -64,7 +64,7 @@ public class BreakpointWindow extends JFrame implements MouseListener, Breakpoin
      * Constructs a new BreakpointWindow.
      */
     public BreakpointWindow() {
-        super("Breakpoint Panel");
+        super("断点面板");
         breakpoints = new Vector<Breakpoint>();
         model = new BreakpointTableModel();
         breakpointTable = new JTable(model);
@@ -175,7 +175,7 @@ public class BreakpointWindow extends JFrame implements MouseListener, Breakpoin
         JScrollPane scrollPane = new JScrollPane(breakpointTable);
         scrollPane.setPreferredSize(new Dimension(190, 330));
         addButton.setPreferredSize(new Dimension(35, 25));
-        addButton.setToolTipText("Add breakpoint");
+        addButton.setToolTipText("设断点");
         addButton.setIcon(addIcon);
         addButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -183,7 +183,7 @@ public class BreakpointWindow extends JFrame implements MouseListener, Breakpoin
             }
         });
         removeButton.setPreferredSize(new Dimension(35, 25));
-        removeButton.setToolTipText("Remove breakpoint");
+        removeButton.setToolTipText("删断点");
         removeButton.setIcon(removeIcon);
         removeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -191,7 +191,7 @@ public class BreakpointWindow extends JFrame implements MouseListener, Breakpoin
             }
         });
         okButton.setPreferredSize(new Dimension(35, 25));
-        okButton.setToolTipText("OK");
+        okButton.setToolTipText("好");
         okButton.setIcon(okIcon);
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -239,7 +239,7 @@ public class BreakpointWindow extends JFrame implements MouseListener, Breakpoin
 
     // An inner class representing the model of the breakpoint table.
     class BreakpointTableModel extends AbstractTableModel {
-        String[] columnNames = {"Variable Name", "Value"};
+        String[] columnNames = {"变量名", "值"};
 
         /**
          * Returns the number of columns.

@@ -134,7 +134,7 @@ public class Pins extends InteractiveValueComputerPart {
         if (isLegalWidth(index, value))
             setValueAt(index, value, true);
         else {
-            notifyErrorListeners("Value doesn't match the pin's width");
+            notifyErrorListeners("值与脚宽不配");
             quietUpdateGUI(index, (short)nodes[event.getIndex()].get());
         }
     }

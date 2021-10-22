@@ -98,10 +98,10 @@ public class ALU extends BuiltInGateWithGUI {
     }
 
     public short getValueAt(int index) throws GateException {
-        throw new GateException("ALU cannot be used as a variable");
+        throw new GateException("ALU不能用作变量");
     }
 
     public void setValueAt(int index, short value) throws GateException {
-        throw new GateException("ALU cannot be used as a variable");
+        throw new GateException("ALU不能用作变量");
     }
 }

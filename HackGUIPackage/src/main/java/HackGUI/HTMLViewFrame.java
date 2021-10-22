@@ -39,14 +39,14 @@ public class HTMLViewFrame extends JFrame {
      * Constructs a new HTMLViewFrame for the given HTML file.
      */
     public HTMLViewFrame(URL url) {
-        setTitle("Help");
+        setTitle("助");
         ep.setEditable(false);
         ep.setContentType("text/html");
 
         try {
             ep.setPage(url);
         } catch (IOException ioe) {
-            System.err.println("Error while reading: " + url);
+            System.err.println("读出错: " + url);
             System.exit(-1);
         }
 

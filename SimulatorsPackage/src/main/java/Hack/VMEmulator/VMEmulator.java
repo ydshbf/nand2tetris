@@ -192,14 +192,14 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
         ramGUI.setLabel(Definitions.ARG_POINTER_ADDRESS, Definitions.ARG_POINTER_NAME);
         ramGUI.setLabel(Definitions.THIS_POINTER_ADDRESS, Definitions.THIS_POINTER_NAME);
         ramGUI.setLabel(Definitions.THAT_POINTER_ADDRESS, Definitions.THAT_POINTER_NAME);
-        ramGUI.setLabel(Definitions.R5_ADDRESS, "Temp0");
-        ramGUI.setLabel(Definitions.R6_ADDRESS, "Temp1");
-        ramGUI.setLabel(Definitions.R7_ADDRESS, "Temp2");
-        ramGUI.setLabel(Definitions.R8_ADDRESS, "Temp3");
-        ramGUI.setLabel(Definitions.R9_ADDRESS, "Temp4");
-        ramGUI.setLabel(Definitions.R10_ADDRESS, "Temp5");
-        ramGUI.setLabel(Definitions.R11_ADDRESS, "Temp6");
-        ramGUI.setLabel(Definitions.R12_ADDRESS, "Temp7");
+        ramGUI.setLabel(Definitions.R5_ADDRESS, "暂0");
+        ramGUI.setLabel(Definitions.R6_ADDRESS, "暂1");
+        ramGUI.setLabel(Definitions.R7_ADDRESS, "暂2");
+        ramGUI.setLabel(Definitions.R8_ADDRESS, "暂3");
+        ramGUI.setLabel(Definitions.R9_ADDRESS, "暂4");
+        ramGUI.setLabel(Definitions.R10_ADDRESS, "暂5");
+        ramGUI.setLabel(Definitions.R11_ADDRESS, "暂6");
+        ramGUI.setLabel(Definitions.R12_ADDRESS, "暂7");
         ramGUI.setLabel(Definitions.R13_ADDRESS, Definitions.R13_NAME);
         ramGUI.setLabel(Definitions.R14_ADDRESS, Definitions.R14_NAME);
         ramGUI.setLabel(Definitions.R15_ADDRESS, Definitions.R15_NAME);
@@ -290,7 +290,7 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
     }
 
     public String getName() {
-        return "Virtual Machine Emulator";
+        return "虚拟机仿真器";
     }
 
     /**
@@ -338,7 +338,7 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
             return String.valueOf(cpu.getRAM().getValueAt(index));
         }
         else
-            throw new VariableException("Unknown variable", varName);
+            throw new VariableException("未知变量", varName);
     }
 
     /**
@@ -384,11 +384,11 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
                 cpu.setSP((short)numValue);
             }
             else if (varName.equals(VAR_CURRENT_FUNCTION))
-                throw new VariableException("Read Only variable", varName);
+                throw new VariableException("只读变量", varName);
             else if (varName.equals(VAR_LINE)) {
                 numValue = Integer.parseInt(value);
                 if (numValue >= cpu.getProgram().getSize())
-                    throw new VariableException("Line " + value + "is not within the program range",
+                    throw new VariableException("第 " + value + "行不在程域内",
                                                 varName);
                 cpu.getProgram().setPC((short)numValue);
             }
@@ -429,9 +429,9 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
                 cpu.getRAM().setValueAt(index, (short)numValue, false);
             }
             else
-                throw new VariableException("Unknown variable", varName);
+                throw new VariableException("未知变量", varName);
         } catch (NumberFormatException nfe) {
-            throw new VariableException("'" + value + "' is not a legal value for variable",
+            throw new VariableException("'" + value + "' 不是变量合法值",
                                         varName);
         }
     }
@@ -444,7 +444,7 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
     public void doCommand(String[] command)
      throws CommandException, ProgramException, VariableException {
         if (command.length == 0)
-            throw new CommandException("Empty command", command);
+            throw new CommandException("空令", command);
 
         // hide gui highlights
         if (animationMode != HackController.NO_DISPLAY_CHANGES)
@@ -454,18 +454,18 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
         switch (command[0]) {
             case COMMAND_VMSTEP:
                 if (command.length != 1)
-                    throw new CommandException("Illegal number of arguments to command", command);
+                    throw new CommandException("令之参量数不匹配", command);
 
                 cpu.executeInstruction();
                 break;
             case COMMAND_SETVAR:
                 if (command.length != 3)
-                    throw new CommandException("Illegal number of arguments to command", command);
+                    throw new CommandException("令之参量数不匹配", command);
                 setValue(command[1], command[2]);
                 break;
             case COMMAND_ROMLOAD:
                 if (command.length != 1 && command.length != 2)
-                    throw new CommandException("Illegal number of arguments to command", command);
+                    throw new CommandException("令之参量数不匹配", command);
 
                 String fileName = workingDir + (command.length == 1 ? "" : "/" + command[1]);
 
@@ -473,7 +473,7 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
                 cpu.boot();
                 break;
             default:
-                throw new CommandException("Unknown simulator command", command);
+                throw new CommandException("未知仿真器令", command);
         }
     }
 
@@ -664,12 +664,12 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
     // Throws VariableException if i is not a legal address in the RAM.
     private static short getRamIndex(String varName) throws VariableException {
         if (!varName.contains("]"))
-            throw new VariableException("Missing ']'", varName);
+            throw new VariableException("缺 ']'", varName);
 
         String indexStr = varName.substring(varName.indexOf("[") + 1, varName.indexOf("]"));
         int index = Integer.parseInt(indexStr);
         if (index < 0 || index >= Definitions.RAM_SIZE)
-            throw new VariableException("Illegal variable index", varName);
+            throw new VariableException("非法变量号", varName);
 
         return (short)index;
     }
@@ -678,13 +678,13 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
     private void check_value(String varName, int value) throws VariableException {
         if (value < -32768 || value >= 32768)
             throw new VariableException(value +
-                " is an illegal value for variable", varName);
+                " 是变量非法值", varName);
     }
 
     // Checks that the given value is a legal 16-bit address
     private void check_address(String varName, int value) throws VariableException {
         if (value < 0 || value >= Definitions.RAM_SIZE)
             throw new VariableException(value +
-                " is an illegal value for", varName);
+                " 是非法值", varName);
     }
 }

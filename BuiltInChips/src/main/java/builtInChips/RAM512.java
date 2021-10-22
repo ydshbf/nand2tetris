@@ -25,6 +25,6 @@ public class RAM512 extends RAM {
     public RAM512() {
         super(512);
         if (memoryGUI != null)
-            memoryGUI.setName("RAM 512:");
+            memoryGUI.setName("内存 512:");
     }
 }

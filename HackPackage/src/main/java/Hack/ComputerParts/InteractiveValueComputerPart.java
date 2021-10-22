@@ -118,7 +118,7 @@ public abstract class InteractiveValueComputerPart extends ValueComputerPart
         int newIndex = event.getIndex();
         clearErrorListeners();
         if ((newValue < minValue || newValue > maxValue) && newValue != nullValue) {
-            notifyErrorListeners("Value must be in the range " + minValue + ".." + maxValue);
+            notifyErrorListeners("值需在此域 " + minValue + ".." + maxValue);
             quietUpdateGUI(newIndex, getValueAt(newIndex));
         }
         else

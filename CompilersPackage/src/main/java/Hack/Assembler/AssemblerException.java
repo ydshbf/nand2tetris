@@ -33,6 +33,6 @@ public class AssemblerException extends Exception {
      * Constructs a new AssemblerException with the given message and Line number.
      */
     public AssemblerException(String message, int lineNumber) {
-        super("In line " + lineNumber + ", " + message);
+        super("于行 " + lineNumber + ", " + message);
     }
 }

@@ -43,7 +43,7 @@ public class PC extends BuiltInGateWithGUI implements ComputerPartEventListener 
     public PC() {
         if (GatesManager.getInstance().isChipsGUIEnabled()) {
             gui = new RegisterComponent();
-            gui.setName("PC:");
+            gui.setName("现令:");
             gui.reset();
             gui.setLocation(355,442);
             gui.addListener(this);
@@ -79,7 +79,7 @@ public class PC extends BuiltInGateWithGUI implements ComputerPartEventListener 
         short newValue = event.getValue();
         clearErrorListeners();
         if (newValue < 0 || newValue > 32767) {
-            notifyErrorListeners("Illegal address value");
+            notifyErrorListeners("非法址值");
             if (gui != null)
                 gui.setValueAt(0, value);
         }
@@ -107,7 +107,7 @@ public class PC extends BuiltInGateWithGUI implements ComputerPartEventListener 
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index != 0)
-            throw new GateException("PC has no index. Use PC[]");
+            throw new GateException("现令无素引，用现令[]");
     }
 
     public void setValueAt(int index, short value) throws GateException {

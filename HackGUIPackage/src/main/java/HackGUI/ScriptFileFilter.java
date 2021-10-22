@@ -61,6 +61,6 @@ public class ScriptFileFilter extends FileFilter {
 
     // The description of this filter
     public String getDescription() {
-        return "Script Files";
+        return "剧本";
     }
 }
