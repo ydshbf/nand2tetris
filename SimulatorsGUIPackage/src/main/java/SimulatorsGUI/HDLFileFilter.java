@@ -64,6 +64,6 @@ public class HDLFileFilter extends FileFilter {
      * The description of this filter
      */
     public String getDescription() {
-        return "HDL Files";
+        return "硬件描档";
     }
 }
