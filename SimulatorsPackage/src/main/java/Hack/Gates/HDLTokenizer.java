@@ -227,6 +227,13 @@ public class HDLTokenizer {
         keywords.put("BUILTIN",new Integer(KW_BUILTIN));
         keywords.put("CLOCKED",new Integer(KW_CLOCKED));
         keywords.put("PARTS:",new Integer(KW_PARTS));
+
+        keywords.put("芯",new Integer(KW_CHIP));
+        keywords.put("入",new Integer(KW_IN));
+        keywords.put("出",new Integer(KW_OUT));
+        keywords.put("内建",new Integer(KW_BUILTIN));
+        keywords.put("钟驱",new Integer(KW_CLOCKED));
+        keywords.put("部件:",new Integer(KW_PARTS));        
     }
 
     // Initializes the symbols hashtable

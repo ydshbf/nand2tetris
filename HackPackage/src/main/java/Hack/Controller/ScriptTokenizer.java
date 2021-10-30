@@ -278,6 +278,17 @@ public class ScriptTokenizer {
         keywords.put("clear-breakpoints",new Integer(KW_CLEAR_BREAKPOINTS));
         keywords.put("repeat",new Integer(KW_REPEAT));
         keywords.put("while",new Integer(KW_WHILE));
+
+        keywords.put("出档",new Integer(KW_OUTPUT_FILE));
+        keywords.put("比",new Integer(KW_COMPARE_TO));
+        keywords.put("出单",new Integer(KW_OUTPUT_LIST));
+        keywords.put("出",new Integer(KW_OUTPUT));
+        keywords.put("回响",new Integer(KW_ECHO));
+        keywords.put("清回响",new Integer(KW_CLEAR_ECHO));
+        keywords.put("断点",new Integer(KW_BREAKPOINT));
+        keywords.put("清断点",new Integer(KW_CLEAR_BREAKPOINTS));
+        keywords.put("重复",new Integer(KW_REPEAT));
+        keywords.put("当",new Integer(KW_WHILE));        
     }
 
     // Initializes the symbols hashtable

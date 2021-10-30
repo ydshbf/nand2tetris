@@ -1,0 +1,56 @@
+// This file is part of the materials accompanying the book
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: tools/builtIn/ALU.hdl
+
+/**
+ * The ALU.  Computes a pre-defined set of functions out = f(x,y)
+ * where x and y are two 16-bit inputs. The function f is selected 
+ * by a set of 6 control bits denoted zx, nx, zy, ny, f, no.
+ * The ALU operation can be described using the following pseudocode:
+ *     if zx=1 set x = 0       // 16-bit zero constant
+ *     if nx=1 set x = !x      // Bit-wise negation
+ *     if zy=1 set y = 0       // 16-bit zero constant
+ *     if ny=1 set y = !y      // Bit-wise negation
+ *     if f=1  set out = x + y // Integer 2's complement addition
+ *     else    set out = x & y // Bit-wise And
+ *     if no=1 set out = !out  // Bit-wise negation
+ *
+ * In addition to computing out, the ALU computes two 1-bit outputs:
+ *     if out=0 set zr = 1 else zr = 0 // 16-bit equality comparison
+ *     if out<0 set ng = 1 else ng = 0 // 2's complement comparison
+ 算术贰值计算器（单元），执行一组预定义算法： 出=函(数，仓)，
+ 其中数与仓都是16位输入。选哪组算法，由6个控位决定：零数位、反数位、零仓位、反仓位、函位、反出位。
+依如下规则求输出：
+若 （零数位=1）数=0               // 16位恒量
+若 （反数位=1）数=！数            // 位反
+若 （零仓位=1）仓=0               // 16位恒量
+若 （反仓位=1）仓=！仓             // 位反
+若 （函位=1）出=数+仓             // 整数二进制补码相加
+否             出=数&仓             // 位与
+若 （反出位=1）出=！出              // 位反
+若 （出=0）出零旗=1 否 出零旗=0     // 16位比较
+若 （出<0)出负旗=1 否 出负旗=0      // 二进制补码比较
+ */
+
+芯 算贰器 {
+
+    入  // 16-位输入:
+        数[16], 仓[16],
+        // 控位:
+        零数位, // 数盒置〇
+        反数位, // 位反数盒
+        零仓位, // 仓盒置〇
+        反仓位, // 位反仓盒
+        函位,  // 算法选择: 1选相加, 0 选位与
+        反出位; // 位反输出
+
+    出 // 16-输出
+        输出[16],
+
+        // 算贰器输出旗（标志）
+        出零旗, // 输出为〇时为1否则为〇
+        出负旗; // 输出为负时为1否则为〇
+
+    内建 算贰器;
+}
