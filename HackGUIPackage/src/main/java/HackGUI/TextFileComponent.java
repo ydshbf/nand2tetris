@@ -104,7 +104,7 @@ public class TextFileComponent extends JPanel implements TextFileGUI {
         if (clear)
             highlightedLines.clear();
 
-        highlightedLines.add(new Integer(index));
+        highlightedLines.add(Integer.valueOf(index));
         Utilities.tableCenterScroll(this, textFileTable, index);
         repaint();
     }
@@ -115,12 +115,12 @@ public class TextFileComponent extends JPanel implements TextFileGUI {
     }
 
     public void addEmphasis(int index) {
-        emphasizedLines.add(new Integer(index));
+        emphasizedLines.add(Integer.valueOf(index));
         repaint();
     }
 
     public void removeEmphasis(int index) {
-        emphasizedLines.remove(new Integer(index));
+        emphasizedLines.remove(Integer.valueOf(index));
         repaint();
     }
 
@@ -312,12 +312,12 @@ public class TextFileComponent extends JPanel implements TextFileGUI {
         }
 
         public void setRenderer(int row, int column) {
-            if (highlightedLines.contains(new Integer(row)))
+            if (highlightedLines.contains(Integer.valueOf(row)))
                 setBackground(Color.yellow);
             else
                 setBackground(null);
 
-            if (emphasizedLines.contains(new Integer(row)))
+            if (emphasizedLines.contains(Integer.valueOf(row)))
                 setForeground(Color.red);
             else
                 setForeground(null);

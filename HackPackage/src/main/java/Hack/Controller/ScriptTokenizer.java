@@ -105,10 +105,10 @@ public class ScriptTokenizer {
     private StreamTokenizer parser;
 
     // Hashtable containing the keywords of the language
-    private Hashtable keywords;
+    private Hashtable<String,Integer> keywords;
 
     // Hashtable containing the symbols of the language
-    private Hashtable symbols;
+    private Hashtable<String,String> symbols;
 
     // The type of the current token
     private int tokenType;
@@ -267,33 +267,33 @@ public class ScriptTokenizer {
 
     // Initializes the keywords hashtable
     private void initKeywords() {
-        keywords = new Hashtable();
-        keywords.put("output-file",new Integer(KW_OUTPUT_FILE));
-        keywords.put("compare-to",new Integer(KW_COMPARE_TO));
-        keywords.put("output-list",new Integer(KW_OUTPUT_LIST));
-        keywords.put("output",new Integer(KW_OUTPUT));
-        keywords.put("echo",new Integer(KW_ECHO));
-        keywords.put("clear-echo",new Integer(KW_CLEAR_ECHO));
-        keywords.put("breakpoint",new Integer(KW_BREAKPOINT));
-        keywords.put("clear-breakpoints",new Integer(KW_CLEAR_BREAKPOINTS));
-        keywords.put("repeat",new Integer(KW_REPEAT));
-        keywords.put("while",new Integer(KW_WHILE));
+        keywords = new Hashtable<>();
+        keywords.put("output-file",Integer.valueOf(KW_OUTPUT_FILE));
+        keywords.put("compare-to",Integer.valueOf(KW_COMPARE_TO));
+        keywords.put("output-list",Integer.valueOf(KW_OUTPUT_LIST));
+        keywords.put("output",Integer.valueOf(KW_OUTPUT));
+        keywords.put("echo",Integer.valueOf(KW_ECHO));
+        keywords.put("clear-echo",Integer.valueOf(KW_CLEAR_ECHO));
+        keywords.put("breakpoint",Integer.valueOf(KW_BREAKPOINT));
+        keywords.put("clear-breakpoints",Integer.valueOf(KW_CLEAR_BREAKPOINTS));
+        keywords.put("repeat",Integer.valueOf(KW_REPEAT));
+        keywords.put("while",Integer.valueOf(KW_WHILE));
 
-        keywords.put("出档",new Integer(KW_OUTPUT_FILE));
-        keywords.put("比",new Integer(KW_COMPARE_TO));
-        keywords.put("出单",new Integer(KW_OUTPUT_LIST));
-        keywords.put("出",new Integer(KW_OUTPUT));
-        keywords.put("回响",new Integer(KW_ECHO));
-        keywords.put("清回响",new Integer(KW_CLEAR_ECHO));
-        keywords.put("断点",new Integer(KW_BREAKPOINT));
-        keywords.put("清断点",new Integer(KW_CLEAR_BREAKPOINTS));
-        keywords.put("重复",new Integer(KW_REPEAT));
-        keywords.put("当",new Integer(KW_WHILE));        
+        keywords.put("输出档",Integer.valueOf(KW_OUTPUT_FILE));
+        keywords.put("比",Integer.valueOf(KW_COMPARE_TO));
+        keywords.put("输出单",Integer.valueOf(KW_OUTPUT_LIST));
+        keywords.put("输出",Integer.valueOf(KW_OUTPUT));
+        keywords.put("回显",Integer.valueOf(KW_ECHO));
+        keywords.put("清回显",Integer.valueOf(KW_CLEAR_ECHO));
+        keywords.put("断点",Integer.valueOf(KW_BREAKPOINT));
+        keywords.put("清断点",Integer.valueOf(KW_CLEAR_BREAKPOINTS));
+        keywords.put("复",Integer.valueOf(KW_REPEAT));
+        keywords.put("当",Integer.valueOf(KW_WHILE));        
     }
 
     // Initializes the symbols hashtable
     private void initSymbols() {
-        symbols = new Hashtable();
+        symbols = new Hashtable<>();
         symbols.put("{","{");
         symbols.put("}","}");
         symbols.put(",",",");

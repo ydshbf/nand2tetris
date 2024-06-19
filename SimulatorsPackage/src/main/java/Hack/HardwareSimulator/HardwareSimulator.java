@@ -53,6 +53,12 @@ public class HardwareSimulator extends HackSimulator
     private static final String COMMAND_EVAL = "eval";
     private static final String COMMAND_SETVAR = "set";
 
+    private static final String 令起 = "起";
+    private static final String 令伏 = "伏";
+    private static final String 令载 = "载";
+    private static final String 令算 = "算";
+    private static final String 令设 = "设";    
+
     private static final File INITIAL_BUILTIN_DIR = new File("builtInChips");
 
     // null value
@@ -319,7 +325,7 @@ public class HardwareSimulator extends HackSimulator
             throw new CommandException("空变量", command);
 
         // execute the appropriate command
-        if (command[0].equals(COMMAND_TICK)) {
+        if (command[0].equals(COMMAND_TICK) || command[0].equals(令起)) {
             if (command.length != 1)
                 throw new CommandException("令参数不匹配", command);
             else if (gate == null)
@@ -329,7 +335,7 @@ public class HardwareSimulator extends HackSimulator
 
             performTick();
         }
-        else if (command[0].equals(COMMAND_TOCK)) {
+        else if (command[0].equals(COMMAND_TOCK) || command[0].equals(令伏)) {
             if (command.length != 1)
                 throw new CommandException("令参数不匹配", command);
             else if (gate == null)
@@ -339,7 +345,7 @@ public class HardwareSimulator extends HackSimulator
 
             performTock();
         }
-        else if (command[0].equals(COMMAND_EVAL)) {
+        else if (command[0].equals(COMMAND_EVAL) || command[0].equals(令算)) {
             if (command.length != 1)
                 throw new CommandException("令参数不匹配", command);
             else if (gate == null)
@@ -347,12 +353,12 @@ public class HardwareSimulator extends HackSimulator
 
             performEval();
         }
-        else if (command[0].equals(COMMAND_SETVAR)) {
+        else if (command[0].equals(COMMAND_SETVAR) || command[0].equals(令设)) {
             if (command.length != 3)
                 throw new CommandException("令参数不匹配", command);
             setValue(command[1], command[2]);
         }
-        else if (command[0].equals(COMMAND_LOAD)) {
+        else if (command[0].equals(COMMAND_LOAD) || command[0].equals(令载)) {
             if (command.length != 2)
                 throw new CommandException("令参数不匹配", command);
 

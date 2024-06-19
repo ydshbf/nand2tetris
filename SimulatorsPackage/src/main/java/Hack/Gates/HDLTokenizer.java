@@ -44,10 +44,10 @@ public class HDLTokenizer {
     private StreamTokenizer parser;
 
     // Hashtable containing the keywords of the language
-    private Hashtable keywords;
+    private Hashtable<String, Integer> keywords;
 
     // Hashtable containing the symbols of the language
-    private Hashtable symbols;
+    private Hashtable<String, String> symbols;
 
     // The type of the current token
     private int tokenType;
@@ -220,25 +220,25 @@ public class HDLTokenizer {
 
     // Initializes the keywords hashtable
     private void initKeywords() {
-        keywords = new Hashtable();
-        keywords.put("CHIP",new Integer(KW_CHIP));
-        keywords.put("IN",new Integer(KW_IN));
-        keywords.put("OUT",new Integer(KW_OUT));
-        keywords.put("BUILTIN",new Integer(KW_BUILTIN));
-        keywords.put("CLOCKED",new Integer(KW_CLOCKED));
-        keywords.put("PARTS:",new Integer(KW_PARTS));
+        keywords = new Hashtable<String, Integer>();
+        keywords.put("CHIP",Integer.valueOf(KW_CHIP));
+        keywords.put("IN",Integer.valueOf(KW_IN));
+        keywords.put("OUT",Integer.valueOf(KW_OUT));
+        keywords.put("BUILTIN",Integer.valueOf(KW_BUILTIN));
+        keywords.put("CLOCKED",Integer.valueOf(KW_CLOCKED));
+        keywords.put("PARTS:",Integer.valueOf(KW_PARTS));
 
-        keywords.put("芯",new Integer(KW_CHIP));
-        keywords.put("入",new Integer(KW_IN));
-        keywords.put("出",new Integer(KW_OUT));
-        keywords.put("内建",new Integer(KW_BUILTIN));
-        keywords.put("钟驱",new Integer(KW_CLOCKED));
-        keywords.put("部件:",new Integer(KW_PARTS));        
+        keywords.put("芯",Integer.valueOf(KW_CHIP));
+        keywords.put("入",Integer.valueOf(KW_IN));
+        keywords.put("出",Integer.valueOf(KW_OUT));
+        keywords.put("内建",Integer.valueOf(KW_BUILTIN));
+        keywords.put("钟驱",Integer.valueOf(KW_CLOCKED));
+        keywords.put("部件:",Integer.valueOf(KW_PARTS));        
     }
 
     // Initializes the symbols hashtable
     private void initSymbols() {
-        symbols = new Hashtable();
+        symbols = new Hashtable<String, String>();
         symbols.put("{","{");
         symbols.put("}","}");
         symbols.put(",",",");

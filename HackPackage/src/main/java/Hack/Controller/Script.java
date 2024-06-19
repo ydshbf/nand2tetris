@@ -151,7 +151,7 @@ public class Script {
             }
 
             commands.addElement(command);
-            lineNumbers.addElement(new Integer(lineNumber));
+            lineNumbers.addElement(Integer.valueOf(lineNumber));
         }
 
         if (repeatOpen || whileOpen)
@@ -159,7 +159,7 @@ public class Script {
 
         command = new Command(Command.END_SCRIPT_COMMAND);
         commands.addElement(command);
-        lineNumbers.addElement(new Integer(lineNumber));
+        lineNumbers.addElement(Integer.valueOf(lineNumber));
     }
 
     // creates and returns a simulator command.
@@ -389,7 +389,7 @@ public class Script {
               input.getSymbol() == '{'))
                 scriptError("Missing '{' in repeat command");
 
-        return new Command(Command.REPEAT_COMMAND, new Integer(repeatNum));
+        return new Command(Command.REPEAT_COMMAND, Integer.valueOf(repeatNum));
     }
 
     // creates and returns a controller While command.

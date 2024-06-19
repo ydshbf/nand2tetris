@@ -244,7 +244,7 @@ public class PinsComponent extends JPanel implements PinsGUI, MouseListener, Pin
      * Highlights the value at the given index.
      */
     public void highlight(int index) {
-        highlightIndex.addElement(new Integer(index));
+        highlightIndex.addElement(Integer.valueOf(index));
         repaint();
     }
 

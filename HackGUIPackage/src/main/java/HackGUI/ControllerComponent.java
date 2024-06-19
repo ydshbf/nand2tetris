@@ -994,7 +994,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
                 break;
         }
 
-        notifyControllerListeners(ControllerEvent.ADDITIONAL_DISPLAY_CHANGE, new Integer(selectedIndex));
+        notifyControllerListeners(ControllerEvent.ADDITIONAL_DISPLAY_CHANGE, Integer.valueOf(selectedIndex));
     }
 
     /**
@@ -1057,7 +1057,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         JSlider source = (JSlider)e.getSource();
         if (!source.getValueIsAdjusting()) {
             int speed = source.getValue();
-            notifyControllerListeners(ControllerEvent.SPEED_CHANGE, new Integer(speed));
+            notifyControllerListeners(ControllerEvent.SPEED_CHANGE, Integer.valueOf(speed));
         }
     }
 
@@ -1083,7 +1083,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
                 break;
         }
 
-        notifyControllerListeners(ControllerEvent.ANIMATION_MODE_CHANGE,new Integer(selectedIndex));
+        notifyControllerListeners(ControllerEvent.ANIMATION_MODE_CHANGE,Integer.valueOf(selectedIndex));
     }
 
     /**
