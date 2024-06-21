@@ -57,10 +57,10 @@ public class Jack_Sys extends JackOSClass {
         String errorDescription = null;
         switch (errorCode) {
             case SYS_WAIT_NEGATIVE_DURATION:
-                errorDescription = "续时必为正";
+                errorDescription = "续时须正";
                 break;
             case ARRAY_NEW_NONPOSITIVE_SIZE:
-                errorDescription = "队夵必为正";
+                errorDescription = "队夵须正";
                 break;
             case MATH_DIVIDE_ZERO:
                 errorDescription = "除以零";
@@ -69,25 +69,25 @@ public class Jack_Sys extends JackOSClass {
                 errorDescription = "负数不能开平方根";
                 break;
             case MEMORY_ALLOC_NONPOSITIVE_SIZE:
-                errorDescription = "配存夵必为正";
+                errorDescription = "贮夵须正";
                 break;
             case MEMORY_ALLOC_HEAP_OVERFLOW:
                 errorDescription = "堆溢";
                 break;
             case SCREEN_DRAWPIXEL_ILLEGAL_COORDS:
-                errorDescription = "非法像素座标";
+                errorDescription = "错像素座标";
                 break;
             case SCREEN_DRAWLINE_ILLEGAL_COORDS:
-                errorDescription = "非法行座标";
+                errorDescription = "错行座标";
                 break;
             case SCREEN_DRAWRECTANGLE_ILLEGAL_COORDS:
-                errorDescription = "非法矩座标";
+                errorDescription = "错矩座标";
                 break;
             case SCREEN_DRAWCIRCLE_ILLEGAL_CENTER:
-                errorDescription = "非法圆心座标";
+                errorDescription = "错圆心座标";
                 break;
             case SCREEN_DRAWCIRCLE_ILLEGAL_RADIUS:
-                errorDescription = "非法半径";
+                errorDescription = "错半径";
                 break;
             case STRING_NEW_NEGATIVE_LENGTH:
                 errorDescription = "丄长必非负";
@@ -108,7 +108,7 @@ public class Jack_Sys extends JackOSClass {
                 errorDescription = "串容量不足";
                 break;
             case OUTPUT_MOVECURSOR_ILLEGAL_POSITION:
-                errorDescription = "非法光标位";
+                errorDescription = "错光标位";
                 break;
         }
         infiniteLoop("程停了: " + errorDescription);

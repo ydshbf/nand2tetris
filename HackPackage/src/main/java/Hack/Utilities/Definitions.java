@@ -261,7 +261,7 @@ public class Definitions {
     /**
      * The name of the stack pointer assembly symbol
      */
-    public final static String SP_NAME = "栈顶";
+    public final static String SP_NAME = "叠顶";
 
     /**
      * The name of the local register assembly symbol

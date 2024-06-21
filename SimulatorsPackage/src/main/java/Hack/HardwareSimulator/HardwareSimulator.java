@@ -230,7 +230,7 @@ public class HardwareSimulator extends HackSimulator
                 index = Integer.parseInt(varName.substring(varName.indexOf("[") + 1,
                                                            varName.indexOf("]")));
             } catch (Exception nfe) {
-                throw new VariableException("非法部件号", varName);
+                throw new VariableException("错部件号", varName);
             }
         }
 
@@ -251,7 +251,7 @@ public class HardwareSimulator extends HackSimulator
             value = Conversions.toDecimalForm(value);
             numValue = Short.parseShort(value);
         } catch (NumberFormatException nfe) {
-            throw new VariableException("'" + value + "' 不是变量有效值",
+            throw new VariableException("'" + value + "' 非变量有效值",
                                         varName);
         }
 
@@ -267,7 +267,7 @@ public class HardwareSimulator extends HackSimulator
                     readOnly = true;
                 else {
                     if (!isLegalWidth(varName, numValue))
-                        throw new VariableException(value + " 引脚宽度不匹配",
+                        throw new VariableException(value + " 芯脚宽度不匹配",
                                                     varName);
                     else
                         node.set(numValue);
@@ -327,40 +327,40 @@ public class HardwareSimulator extends HackSimulator
         // execute the appropriate command
         if (command[0].equals(COMMAND_TICK) || command[0].equals(令起)) {
             if (command.length != 1)
-                throw new CommandException("令参数不匹配", command);
+                throw new CommandException("令参不匹配", command);
             else if (gate == null)
-                throw new CommandException("未装载门电路非法令", command);
+                throw new CommandException("未装载门电路错令", command);
             else if (clockUp)
-                throw new CommandException("钟波已升非法令", command);
+                throw new CommandException("钟波已升错令", command);
 
             performTick();
         }
         else if (command[0].equals(COMMAND_TOCK) || command[0].equals(令伏)) {
             if (command.length != 1)
-                throw new CommandException("令参数不匹配", command);
+                throw new CommandException("令参不匹配", command);
             else if (gate == null)
-                throw new CommandException("未装载门电路非法令", command);
+                throw new CommandException("未装载门电路错令", command);
             else if (!clockUp)
-                throw new CommandException("钟波已降非法令", command);
+                throw new CommandException("钟波已降错令", command);
 
             performTock();
         }
         else if (command[0].equals(COMMAND_EVAL) || command[0].equals(令算)) {
             if (command.length != 1)
-                throw new CommandException("令参数不匹配", command);
+                throw new CommandException("令参不匹配", command);
             else if (gate == null)
-                throw new CommandException("未装载门电路非法令", command);
+                throw new CommandException("未装载门电路错令", command);
 
             performEval();
         }
         else if (command[0].equals(COMMAND_SETVAR) || command[0].equals(令设)) {
             if (command.length != 3)
-                throw new CommandException("令参数不匹配", command);
+                throw new CommandException("令参不匹配", command);
             setValue(command[1], command[2]);
         }
         else if (command[0].equals(COMMAND_LOAD) || command[0].equals(令载)) {
             if (command.length != 2)
-                throw new CommandException("令参数不匹配", command);
+                throw new CommandException("令参不匹配", command);
 
             if (gui != null && gui.getGateInfo() != null)
                 gui.getGateInfo().setChip(command[1]);
@@ -785,12 +785,12 @@ public class HardwareSimulator extends HackSimulator
     // Throws VariableException if i is negative.
     private static short getIndex(String varName) throws VariableException {
         if (varName.indexOf("]") == -1)
-            throw new VariableException("缺 ']'", varName);
+            throw new VariableException("缺']'", varName);
 
         String indexStr = varName.substring(varName.indexOf("[") + 1, varName.indexOf("]"));
         int index = Integer.parseInt(indexStr);
         if (index < 0)
-            throw new VariableException("非法变量号", varName);
+            throw new VariableException("错变量号", varName);
 
         return (short)index;
     }

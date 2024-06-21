@@ -25,6 +25,6 @@ public class RAM8 extends RAM {
     public RAM8() {
         super(8);
         if (memoryGUI != null)
-            memoryGUI.setName("内存 8:");
+            memoryGUI.setName("贮 8:");
     }
 }

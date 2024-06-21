@@ -261,7 +261,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
     public void clearButton_actionPerformed(ActionEvent e) {
         Object[] options = {"是", "否","取消"};
         int pressedButtonValue = JOptionPane.showOptionDialog(this.getParent(),
-            "确定要清除程序?",
+            "确定要删程序?",
             "警告",
             JOptionPane.YES_NO_CANCEL_OPTION,
             JOptionPane.WARNING_MESSAGE,
@@ -343,7 +343,7 @@ public class ProgramComponent extends JPanel implements VMProgramGUI {
         });
         clearButton.setBounds(new Rectangle(154, 2, 31, 24));
         clearButton.setIcon(clearIcon);
-        clearButton.setToolTipText("除");
+        clearButton.setToolTipText("s");
         this.add(scrollPane, null);
         this.add(nameLbl, null);
         this.add(searchButton, null);

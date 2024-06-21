@@ -50,7 +50,7 @@ public class ROM32K extends BuiltInGateWithGUI
             gui.setContents(values);
             gui.setVisibleRows(7);
             gui.setLocation(326,295);
-            gui.setName("令存:");
+            gui.setName("令贮:");
             gui.reset();
             gui.addListener(this);
             gui.addProgramListener(this);
@@ -123,7 +123,7 @@ public class ROM32K extends BuiltInGateWithGUI
             HackAssemblerTranslator.getInstance().codeToText(newValue);
             updateValue(newAddress, newValue);
         } catch (AssemblerException ae) {
-            notifyErrorListeners("非法指令");
+            notifyErrorListeners("错令");
             if (gui != null)
                 gui.setValueAt(newAddress, values[newAddress]);
         }
@@ -149,7 +149,7 @@ public class ROM32K extends BuiltInGateWithGUI
     // checks the given index. If illegal throws GateException.
     private void checkIndex(int index) throws GateException {
         if (index < 0 || index >= values.length)
-            throw new GateException("非法索引");
+            throw new GateException("错号");
     }
 
     public void setValueAt(int index, short value) throws GateException {

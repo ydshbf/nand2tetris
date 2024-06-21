@@ -28,6 +28,6 @@ public class RAM4K extends RAM {
     public RAM4K() {
         super(4096);
         if (memoryGUI != null)
-            memoryGUI.setName("内存 4K:");
+            memoryGUI.setName("贮 4K:");
     }
 }

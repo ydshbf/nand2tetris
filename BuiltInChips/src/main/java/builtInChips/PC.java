@@ -79,7 +79,7 @@ public class PC extends BuiltInGateWithGUI implements ComputerPartEventListener 
         short newValue = event.getValue();
         clearErrorListeners();
         if (newValue < 0 || newValue > 32767) {
-            notifyErrorListeners("非法址值");
+            notifyErrorListeners("错址");
             if (gui != null)
                 gui.setValueAt(0, value);
         }

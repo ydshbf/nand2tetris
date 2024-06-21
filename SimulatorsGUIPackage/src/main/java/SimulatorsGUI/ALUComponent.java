@@ -377,15 +377,15 @@ public class ALUComponent extends JPanel implements ALUGUI{
         location0Lbl.setBounds(new Rectangle(START_LOCATION_ZERO_X, START_LOCATION_ZERO_Y - 16, 56, 16));
         location0Lbl.setFont(Utilities.smallLabelsFont);
         location0Lbl.setForeground(Color.black);
-        location1Lbl.setText("存/址输入 :");
+        location1Lbl.setText("贮/址输入 :");
         location1Lbl.setBounds(new Rectangle(START_LOCATION_ZERO_X, START_LOCATION_ONE_Y - 16, 70, 16));
         location1Lbl.setFont(Utilities.smallLabelsFont);
         location1Lbl.setForeground(Color.black);
-        location2Lbl.setText("算逻器输出 :");
+        location2Lbl.setText("算理器输出 :");
         location2Lbl.setBounds(new Rectangle(START_LOCATION_TWO_X, START_LOCATION_TWO_Y - 16, 72, 16));
         location2Lbl.setFont(Utilities.smallLabelsFont);
         location2Lbl.setForeground(Color.black);
-        nameLbl.setText("算逻器");
+        nameLbl.setText("算理器");
         nameLbl.setFont(Utilities.labelsFont);
         nameLbl.setBounds(new Rectangle(6, 0, 50, 22));
         this.add(commandLbl, null);

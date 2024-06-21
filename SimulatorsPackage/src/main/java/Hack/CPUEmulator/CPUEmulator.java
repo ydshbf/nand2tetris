@@ -53,6 +53,11 @@ public class CPUEmulator extends HackSimulator implements ComputerPartErrorEvent
     private static final String COMMAND_ROMLOAD = "load";
     private static final String COMMAND_SETVAR = "set";
 
+    private static final String 令起伏 = "ticktock";
+    private static final String 令载 = "load";
+    private static final String 令设 = "set";
+    
+
     // The simulating cpu
     private CPU cpu;
 
@@ -238,18 +243,18 @@ public class CPUEmulator extends HackSimulator implements ComputerPartErrorEvent
             hideHighlightes();
 
         // execute the appropriate command
-        if (command[0].equals(COMMAND_TICKTOCK)) {
+        if (command[0].equals(COMMAND_TICKTOCK) || command[0].equals(令起伏)) {
             if (command.length != 1)
                 throw new CommandException("Illegal number of arguments to command", command);
 
             cpu.executeInstruction();
         }
-        else if (command[0].equals(COMMAND_SETVAR)) {
+        else if (command[0].equals(COMMAND_SETVAR) || command[0].equals(令设)) {
             if (command.length != 3)
                 throw new CommandException("Illegal number of arguments to command", command);
             setValue(command[1], command[2]);
         }
-        else if (command[0].equals(COMMAND_ROMLOAD)) {
+        else if (command[0].equals(COMMAND_ROMLOAD) || command[0].equals(令载)) {
             if (command.length != 2)
                 throw new CommandException("Illegal number of arguments to command", command);
 

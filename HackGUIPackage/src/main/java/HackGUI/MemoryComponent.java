@@ -451,7 +451,7 @@ public class MemoryComponent extends JPanel implements MemoryGUI {
         try {
             result = Format.translateValueToShort(data,dataFormat);
         } catch (NumberFormatException nfe) {
-            throw new TranslationException("Illegal value: " + data);
+            throw new TranslationException("无效值: " + data);
         }
 
         return result;
@@ -493,7 +493,7 @@ public class MemoryComponent extends JPanel implements MemoryGUI {
 
         scrollPane = new JScrollPane(memoryTable);
         this.setLayout(null);
-        searchButton.setToolTipText("Search");
+        searchButton.setToolTipText("找");
         searchButton.setIcon(searchIcon);
         searchButton.setBounds(new Rectangle(159, 2, 31, 25));
         searchButton.addActionListener(new ActionListener() {
@@ -515,7 +515,7 @@ public class MemoryComponent extends JPanel implements MemoryGUI {
         });
         clearButton.setIcon(clearIcon);
         clearButton.setBounds(new Rectangle(128, 2, 31, 25));
-        clearButton.setToolTipText("Clear");
+        clearButton.setToolTipText("删");
         this.add(scrollPane, null);
         this.add(searchButton, null);
         this.add(nameLbl, null);
@@ -583,10 +583,10 @@ public class MemoryComponent extends JPanel implements MemoryGUI {
      */
     public void clearButton_actionPerformed(ActionEvent e) {
 
-        Object[] options = {"Yes", "No","Cancel"};
+        Object[] options = {"是", "否","罢"};
         int pressedButtonValue = JOptionPane.showOptionDialog(this.getParent(),
-            "Are you sure you want to clear ?",
-            "Warning Message",
+            "真要删?",
+            "🔔️提醒",
             JOptionPane.YES_NO_CANCEL_OPTION,
             JOptionPane.WARNING_MESSAGE,
             null,

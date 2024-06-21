@@ -29,7 +29,7 @@ public class RAM16K extends RAM {
         super(16384);
 
         if (memoryGUI != null) {
-            memoryGUI.setName("内存 16K:");
+            memoryGUI.setName("贮 16K:");
             memoryGUI.setVisibleRows(7);
             memoryGUI.setLocation(4,295);
         }

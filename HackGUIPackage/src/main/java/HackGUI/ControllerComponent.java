@@ -138,7 +138,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         formatCombo = new TitledComboBox("格式:", "数显格式",
                                          new String[]{"十进制", "十六进制", "二进制"}, 75);
         additionalDisplayCombo = new TitledComboBox("视图:", "视图选项",
-                                                    new String[]{"脚本", "输出", "比较",
+                                                    new String[]{"剧本", "输出", "比较",
                                                                  "屏"}, 80);
         animationCombo = new TitledComboBox("动画:", "动画类型",
                                             new String[]{"程流", "程及数流",
@@ -738,7 +738,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         runMenu.add(stopMenuItem);
 
 
-        rewindMenuItem = new JMenuItem("复位", KeyEvent.VK_R);
+        rewindMenuItem = new JMenuItem("归位", KeyEvent.VK_R);
         rewindMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 rewindMenuItem_actionPerformed();
@@ -862,7 +862,7 @@ public class ControllerComponent extends JFrame implements ControllerGUI,
         rewindButton.setMaximumSize(buttonSize);
         rewindButton.setMinimumSize(buttonSize);
         rewindButton.setPreferredSize(buttonSize);
-        rewindButton.setToolTipText("复位");
+        rewindButton.setToolTipText("归位");
         rewindButton.setIcon(rewindIcon);
         rewindButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

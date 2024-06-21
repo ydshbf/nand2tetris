@@ -320,7 +320,7 @@ public class HackAssembler extends HackTranslator {
                             if (openAddressPos != lastPos || openAddressPos > closeAddressPos ||
                                 openAddressPos + 1 == closeAddressPos)
                                 throw new AssemblerException(
-                                    "非法使用 [] ");
+                                    "错用 [] ");
 
                             String address = line.substring(openAddressPos + 1, closeAddressPos);
                             compileLine("@" + address);

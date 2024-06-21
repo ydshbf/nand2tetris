@@ -51,7 +51,7 @@ public class SearchMemoryWindow extends JFrame {
      * Constructs a new SearchWindow.
      */
     public SearchMemoryWindow(JPanel tableContainer, JTable table) {
-        super("Go to");
+        super("哪");
         this.table = table;
         this.tableContainer = tableContainer;
         jbInit();
@@ -68,7 +68,7 @@ public class SearchMemoryWindow extends JFrame {
     // Initialization of this component.
     private void jbInit()  {
         instructionLbl.setFont(Utilities.thinLabelsFont);
-        instructionLbl.setText("Enter Address :");
+        instructionLbl.setText("址 :");
         instructionLbl.setBounds(new Rectangle(9, 22, 132, 23));
         this.getContentPane().setLayout(null);
         rowNumber.setBounds(new Rectangle(102, 25, 158, 18));
@@ -77,7 +77,7 @@ public class SearchMemoryWindow extends JFrame {
                 rowNumber_actionPerformed(e);
             }
         });
-        okButton.setToolTipText("Ok");
+        okButton.setToolTipText("好");
         okButton.setIcon(okIcon);
         okButton.setBounds(new Rectangle(49, 60, 63, 44));
         okButton.addActionListener(new ActionListener() {
@@ -91,7 +91,7 @@ public class SearchMemoryWindow extends JFrame {
                 cancelButton_actionPerformed(e);
             }
         });
-        cancelButton.setToolTipText("Cancel");
+        cancelButton.setToolTipText("罢");
         cancelButton.setIcon(cancelIcon);
         this.getContentPane().add(instructionLbl, null);
         this.getContentPane().add(rowNumber, null);

@@ -88,7 +88,7 @@ Nand2Tetris 软件套件允许在 Java 中实现新的 VM 功能，供 VM 模拟
 
 ```java
 /**
- * 返回存储在 VM 内存中给定地址处的值（地址
+ * 返回存储在 VM 贮中给定地址处的值（地址
  * 参数是一个 int 而不是为了方便起见的缩写，但可能只在 HEAP_START_ADDRESS - HEAP_END_ADDRESS 或
  * SCREEN_START_ADDRESS - SCREEN_END_ADDRESS (这些作为静态最终
  * Hack.VMEmulator.BuiltInVMClass 的常量提供
@@ -96,9 +96,9 @@ Nand2Tetris 软件套件允许在 Java 中实现新的 VM 功能，供 VM 模拟
 short readMemory(int address);
 
 /**
- * 更改存储在 VM 内存中给定地址处的值（该值被
+ * 更改存储在 VM 贮中给定地址处的值（该值被
 * 强制转换为 short 并且地址必须是合法的 - 见上文）。如果数据流
-* 动画打开，VM 内存中的变化将被动画化。
+* 动画打开，VM 贮中的变化将被动画化。
  */
 void writeMemory(int address, int value);
 

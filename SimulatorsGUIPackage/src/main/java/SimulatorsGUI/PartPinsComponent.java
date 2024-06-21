@@ -238,7 +238,7 @@ public class PartPinsComponent extends PinsComponent implements PartPinsGUI {
                 notifyListeners((short)row,partPins[row].value);
             }
             catch(NumberFormatException nfe) {
-                notifyErrorListeners("非法值");
+                notifyErrorListeners("错值");
                 valuesStr[row] = Format.translateValueToString(partPins[row].value, dataFormat);
             }
             repaint();

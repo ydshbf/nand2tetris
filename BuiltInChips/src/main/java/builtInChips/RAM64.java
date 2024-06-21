@@ -25,6 +25,6 @@ public class RAM64 extends RAM {
     public RAM64() {
         super(64);
         if (memoryGUI != null)
-            memoryGUI.setName("内存 64:");
+            memoryGUI.setName("贮 64:");
     }
 }

@@ -229,7 +229,7 @@ public class ROMComponent extends PointedMemoryComponent implements ROMGUI {
         romFormat.setPreferredSize(new Dimension(125, 23));
         romFormat.setBounds(new Rectangle(39, 3, 56, 23));
         romFormat.setFont(Utilities.thinLabelsFont);
-        romFormat.setToolTipText("Display Format");
+        romFormat.setToolTipText("显式");
         romFormat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 romFormat_actionPerformed(e);
@@ -251,7 +251,7 @@ public class ROMComponent extends PointedMemoryComponent implements ROMGUI {
      * Opens the file chooser for loading a new program.
      */
     public void loadProgram() {
-        int returnVal = fileChooser.showDialog(this, "载令存");
+        int returnVal = fileChooser.showDialog(this, "载令贮");
         if(returnVal == JFileChooser.APPROVE_OPTION) {
             notifyProgramListeners(ProgramEvent.LOAD,
                                    fileChooser.getSelectedFile().getAbsolutePath());

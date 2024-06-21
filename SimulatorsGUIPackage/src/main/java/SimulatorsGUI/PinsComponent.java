@@ -545,7 +545,7 @@ public class PinsComponent extends JPanel implements PinsGUI, MouseListener, Pin
                     notifyListeners((short)row,pins[row].value);
                 }
                 catch(NumberFormatException nfe) {
-                    notifyErrorListeners("非法值");
+                    notifyErrorListeners("非值");
                     valueStr[row] = Format.translateValueToString(pins[row].value, dataFormat);
                 }
                 repaint();

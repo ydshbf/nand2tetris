@@ -669,7 +669,7 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
         String indexStr = varName.substring(varName.indexOf("[") + 1, varName.indexOf("]"));
         int index = Integer.parseInt(indexStr);
         if (index < 0 || index >= Definitions.RAM_SIZE)
-            throw new VariableException("非法变量号", varName);
+            throw new VariableException("错变量号", varName);
 
         return (short)index;
     }
@@ -678,13 +678,13 @@ public class VMEmulator extends HackSimulator implements ComputerPartErrorEventL
     private void check_value(String varName, int value) throws VariableException {
         if (value < -32768 || value >= 32768)
             throw new VariableException(value +
-                " 是变量非法值", varName);
+                " 是变量错值", varName);
     }
 
     // Checks that the given value is a legal 16-bit address
     private void check_address(String varName, int value) throws VariableException {
         if (value < 0 || value >= Definitions.RAM_SIZE)
             throw new VariableException(value +
-                " 是非法值", varName);
+                " 是错值", varName);
     }
 }

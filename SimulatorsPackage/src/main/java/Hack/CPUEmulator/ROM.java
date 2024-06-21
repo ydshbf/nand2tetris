@@ -129,7 +129,7 @@ public class ROM extends PointedMemory implements ProgramEventListener
             HackAssemblerTranslator.getInstance().codeToText(newValue);
             setValueAt(newAddress, newValue, true);
         } catch (AssemblerException ae) {
-            notifyErrorListeners("非法令");
+            notifyErrorListeners("令");
             quietUpdateGUI(newAddress, mem[newAddress]);
         }
     }

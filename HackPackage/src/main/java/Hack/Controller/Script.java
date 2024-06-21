@@ -38,10 +38,10 @@ public class Script {
     public static final int MAX_OUTPUT_LIST_ARGUMENTS = 20;
 
     // The list of commands
-    private Vector commands;
+    private Vector<Command> commands;
 
     // The list of script line numbers that match the corresponding command
-    private Vector lineNumbers;
+    private Vector<Integer> lineNumbers;
 
     // The file name of the script
     private String scriptName;
@@ -60,11 +60,11 @@ public class Script {
         try {
             input = new ScriptTokenizer(new FileReader(scriptName));
         } catch (IOException ioe) {
-            throw new ScriptException("Script " + scriptName + " not found");
+            throw new ScriptException("剧本" + scriptName + "未找到。");
         }
 
-        commands = new Vector();
-        lineNumbers = new Vector();
+        commands = new Vector<>();
+        lineNumbers = new Vector<>();
         buildScript();
     }
 
@@ -85,8 +85,7 @@ public class Script {
             if (justOpened &&
 				input.getTokenType() == ScriptTokenizer.TYPE_SYMBOL &&
                 input.getSymbol() == '}') {
-				scriptError("An empty " + (repeatOpen?"Repeat":"While") +
-							" block is not allowed");
+				scriptError("禁空" + (repeatOpen?"复":"当"));
 			}
 			justOpened = false;
             switch (input.getTokenType()) {
@@ -94,7 +93,7 @@ public class Script {
                     command = createControllerCommand();
                     if (command.getCode() == Command.REPEAT_COMMAND) {
                         if (repeatOpen || whileOpen)
-                            scriptError("Nested Repeat and While are not allowed");
+                            scriptError("禁嵌套复当");
                         else {
                             repeatOpen = true;
 							justOpened = true;
@@ -102,7 +101,7 @@ public class Script {
                     }
                     else if (command.getCode() == Command.WHILE_COMMAND) {
                         if (repeatOpen || whileOpen)
-                            scriptError("Nested Repeat and While are not allowed");
+                            scriptError("禁嵌套复当");
                         else {
                             whileOpen = true;
 							justOpened = true;
@@ -111,7 +110,7 @@ public class Script {
                     else if (command.getCode() == Command.OUTPUT_LIST_COMMAND)
                         outputListPrepared = true;
                     else if (command.getCode() == Command.OUTPUT_COMMAND && !outputListPrepared)
-                        scriptError("No output list created");
+                        scriptError("未造输出单");
                     break;
 
                 case ScriptTokenizer.TYPE_IDENTIFIER:
@@ -119,12 +118,12 @@ public class Script {
                     break;
 
                 case ScriptTokenizer.TYPE_INT_CONST:
-                    scriptError("A command cannot begin with " + input.getIntValue());
+                    scriptError("禁令始以" + input.getIntValue());
 
                 case ScriptTokenizer.TYPE_SYMBOL:
                     if (input.getSymbol() == '}') {
                         if (!repeatOpen && !whileOpen)
-                            scriptError("a '}' without a Repeat or While");
+                            scriptError("'}'缺复或当");
                         else {
                             if (repeatOpen) {
                                 command = new Command(Command.END_REPEAT_COMMAND);
@@ -137,7 +136,7 @@ public class Script {
                          }
                     }
                     else
-                        scriptError("A command cannot begin with '" + input.getSymbol() + "'");
+                        scriptError("禁令始以'" + input.getSymbol() + "'");
             }
 
             // sets the terminator of the command
@@ -155,7 +154,7 @@ public class Script {
         }
 
         if (repeatOpen || whileOpen)
-            scriptError("Repeat or While not closed");
+            scriptError("复或当未闭");
 
         command = new Command(Command.END_SCRIPT_COMMAND);
         commands.addElement(command);
@@ -266,43 +265,43 @@ public class Script {
             char format = args[i].charAt(procentPos + 1);
             if (format != VariableFormat.BINARY_FORMAT && format != VariableFormat.DECIMAL_FORMAT
                 && format != VariableFormat.HEX_FORMAT && format != VariableFormat.STRING_FORMAT)
-                scriptError("%" + format + " is not a legal format");
+                scriptError("%" + format + "格式错");
 
             // find padL
             int padL = 0;
             int dotPos1 = args[i].indexOf('.', procentPos);
             if (dotPos1 == -1)
-                scriptError("Missing '.'");
+                scriptError("缺'.'");
             try {
                 padL = Integer.parseInt(args[i].substring(procentPos + 2, dotPos1));
             } catch (NumberFormatException nfe) {
-                scriptError("padL must be a number");
+                scriptError("padL须数");
             }
             if (padL < 0)
-                scriptError("padL must be positive");
+                scriptError("padL须正");
 
             // find len
             int len = 0;
             int dotPos2 = args[i].indexOf('.', dotPos1 + 1);
             if (dotPos2 == -1)
-                scriptError("Missing '.'");
+                scriptError("缺'.'");
             try {
                 len = Integer.parseInt(args[i].substring(dotPos1 + 1, dotPos2));
             } catch (NumberFormatException nfe) {
-                scriptError("len must be a number");
+                scriptError("len须数");
             }
             if (len < 1)
-                scriptError("len must be greater than 0");
+                scriptError("len须正");
 
             // find padR
             int padR = 0;
             try {
                 padR = Integer.parseInt(args[i].substring(dotPos2 + 1));
             } catch (NumberFormatException nfe) {
-                scriptError("padR must be a number");
+                scriptError("padR须数");
             }
             if (padR < 0)
-                scriptError("padR must be positive");
+                scriptError("padR须正");
 
             vars[i] = new VariableFormat(varName, format, padL, padR, len);
         }
@@ -349,7 +348,7 @@ public class Script {
         for (count = 0; count < args.length && args[count] != null; count++);
 
         if (count < 2)
-            scriptError("Not enough arguments");
+            scriptError("欠参");
 
         String value = args[1];
         if (value.startsWith("%S"))
@@ -381,13 +380,13 @@ public class Script {
         if (input.getTokenType() == ScriptTokenizer.TYPE_INT_CONST) {
             repeatNum = input.getIntValue();
             if (repeatNum < 1)
-                scriptError("Illegal repeat quantity");
+                scriptError("错复次");
             input.advance();
         }
 
         if (!(input.getTokenType() == ScriptTokenizer.TYPE_SYMBOL &&
               input.getSymbol() == '{'))
-                scriptError("Missing '{' in repeat command");
+                scriptError("复令缺'{'");
 
         return new Command(Command.REPEAT_COMMAND, Integer.valueOf(repeatNum));
     }
@@ -407,7 +406,7 @@ public class Script {
 
         if (!(input.getTokenType() == ScriptTokenizer.TYPE_SYMBOL &&
               input.getSymbol() == '{'))
-                scriptError("Missing '{' in while command");
+                scriptError("当令缺'{'");
 
         return new Command(Command.WHILE_COMMAND, condition);
     }
@@ -429,7 +428,7 @@ public class Script {
         checkTerminator();
 
         if (i == 0)
-            scriptError("Missing arguments");
+            scriptError("缺参");
 
         return args;
     }
@@ -439,12 +438,12 @@ public class Script {
      throws ScriptException {
         if (input.getTokenType() != ScriptTokenizer.TYPE_SYMBOL) {
             if (input.hasMoreTokens())
-                scriptError("too many arguments");
+                scriptError("参过多");
             else
-                scriptError("Script ends without a terminator");
+                scriptError("剧本缺终符");
         }
         else if (input.getSymbol() != ',' && input.getSymbol() != ';' && input.getSymbol() != '!')
-            scriptError("Illegal terminator: '" + input.getSymbol() + "'");
+            scriptError("c终符: '" + input.getSymbol() + "'");
     }
 
     // Throws a script exception with the given message.

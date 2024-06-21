@@ -63,9 +63,9 @@ public class CPUEmulatorComponent extends HackSimulatorComponent implements CPUE
         screen = new ScreenComponent();
         keyboard = new KeyboardComponent();
         ram = new PointedMemoryComponent();
-        ram.setName("内存");
+        ram.setName("值贮");
         rom = new ROMComponent();
-        rom.setName("令存");
+        rom.setName("令贮");
         alu = new ALUComponent();
         a = new RegisterComponent();
         d = new RegisterComponent();

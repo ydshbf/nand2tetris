@@ -118,7 +118,7 @@ public class HackAssemblerTranslator {
     public short getExpByText(String text) throws AssemblerException {
         Short code = (Short)expToCode.get(text);
         if (code == null)
-            throw new AssemblerException("非法式: " + text);
+            throw new AssemblerException("错式: " + text);
         return code.shortValue();
     }
 
@@ -129,7 +129,7 @@ public class HackAssemblerTranslator {
     public String getExpByCode(short code) throws AssemblerException {
         String result = (String)expToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("非法式: " + code);
+            throw new AssemblerException("错式: " + code);
         return result;
     }
 
@@ -140,7 +140,7 @@ public class HackAssemblerTranslator {
     public short getDestByText(String text) throws AssemblerException {
         Short code = (Short)destToCode.get(text);
         if (code == null)
-            throw new AssemblerException("非法目标: " + text);
+            throw new AssemblerException("错靶: " + text);
         return code.shortValue();
     }
 
@@ -151,7 +151,7 @@ public class HackAssemblerTranslator {
     public String getDestByCode(short code) throws AssemblerException {
         String result = (String)destToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("非法目标: " + code);
+            throw new AssemblerException("错靶: " + code);
         return result;
     }
 
@@ -162,7 +162,7 @@ public class HackAssemblerTranslator {
     public short getJmpByText(String text) throws AssemblerException {
         Short code = (Short)jmpToCode.get(text);
         if (code == null)
-            throw new AssemblerException("非法跳: " + text);
+            throw new AssemblerException("错跳: " + text);
         return code.shortValue();
     }
 
@@ -173,7 +173,7 @@ public class HackAssemblerTranslator {
     public String getJmpByCode(short code) throws AssemblerException {
         String result = (String)jmpToText.get(new Short(code));
         if (result == null)
-            throw new AssemblerException("非法跳: " + code);
+            throw new AssemblerException("错跳: " + code);
         return result;
     }
 
@@ -206,7 +206,7 @@ public class HackAssemblerTranslator {
                 if (input.isToken("=")) {
                     Short dest = (Short)destToCode.get(firstToken);
                     if (dest == null)
-                        throw new AssemblerException("需目标");
+                        throw new AssemblerException("需靶");
 
                     destCode = dest.shortValue();
                     input.advance(true);
@@ -322,7 +322,7 @@ public class HackAssemblerTranslator {
                     try {
                         value = (short)Conversions.binaryToInt(line);
                     } catch (NumberFormatException nfe) {
-                        throw new AssemblerException("非法字");
+                        throw new AssemblerException("错字");
                     }
 
                     memory[pc++] = value;

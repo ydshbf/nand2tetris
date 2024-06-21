@@ -35,9 +35,8 @@ import Hack.Assembler.*;
 *        if (no=1) out = !out       //  bitwise negation
 *        if (out=0) zr=1 else zr=0  //  comparision is 16-bit equality
 *        if (out<0) ng=1 else ng=0  //  comparision in 2s-complement
-算术贰值计算器（单元），数与仓都是16位输入，其余输入为控位。
+算术双值计算器（单元），数与仓都是16位输入，其余输入为控位。
 依如下规则求输出：
-若 （零数位=1）数=0               // 16位恒量
 若 （反数位=1）数=！数            // 位反
 若 （零仓位=1）仓=0               // 16位恒量
 若 （反仓位=1）仓=！仓             // 位反
@@ -47,7 +46,7 @@ import Hack.Assembler.*;
 若 （出=0）出零旗=1 否 0）出零旗=0     // 16位比较
 若 （出<0)出负旗=1 否 出负旗=0      // 二进制补码比较
  */
-public class 算贰器 extends BuiltInGateWithGUI {
+public class 算理器 extends BuiltInGateWithGUI {
 
     // The gui;
     private ALUComponent gui;
@@ -58,7 +57,7 @@ public class 算贰器 extends BuiltInGateWithGUI {
     /**
      * Constructs a new ALU.
      */
-    public 算贰器() {
+    public 算理器() {
         if (GatesManager.getInstance().isChipsGUIEnabled()) {
             gui = new ALUComponent();
             gui.setLocation(80,468);

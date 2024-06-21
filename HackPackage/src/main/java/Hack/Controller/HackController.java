@@ -236,7 +236,7 @@ public class HackController
         this.preferences = Preferences.userNodeForPackage(simulator.getClass());
         File file = new File(scriptFileName);
         if (!file.exists())
-            displayMessage(scriptFileName + " doesn't exist", true);
+            displayMessage(scriptFileName + "不在", true);
 
         this.simulator = simulator;
         animationMode = NO_DISPLAY_CHANGES;
@@ -384,7 +384,7 @@ public class HackController
         if (animationMode != NO_DISPLAY_CHANGES)
             timer.start();
         else {
-            displayMessage("Running...", false);
+            displayMessage("跑...", false);
             gui.disableSpeedSlider();
             Thread t = new Thread(fastForwardTask);
             t.start();
@@ -408,7 +408,7 @@ public class HackController
             singleStepRunning = false;
 
             if (terminatorType == Command.STOP_TERMINATOR) {
-                displayMessage("Script reached a '!' terminator", false);
+                displayMessage("剧本至'!'终", false);
                 stopMode();
             }
 
@@ -423,7 +423,7 @@ public class HackController
                         breakpointReached = true;
                         breakpoint.on();
                         gui.setBreakpoints(breakpoints);
-                        displayMessage("Breakpoint reached", false);
+                        displayMessage("至断点", false);
                         gui.showBreakpoints();
                         stopMode();
                     }
@@ -532,18 +532,18 @@ public class HackController
 
                     if (comparisonFile != null) {
                         if (comparisonFailed)
-                            displayMessage("End of script - Comparison failure at line "
+                            displayMessage("剧终 - 比异于行"
                                                + comparisonFailureLine, true);
                         else
-                            displayMessage("End of script - Comparison ended successfully",
+                            displayMessage("剧终 - 比无异",
                                                false);
 
                         comparisonFile.close();
                     }
                     else
-                        displayMessage("End of script", false);
+                        displayMessage("剧终", false);
                 } catch (IOException ioe) {
-                    throw new ControllerException("Could not read comparison file");
+                    throw new ControllerException("未能读比档");
                 }
 
                 break;
@@ -594,7 +594,7 @@ public class HackController
     // Executes the controller's output-list command.
     private void doOutputListCommand(Command command) throws ControllerException {
         if (output == null)
-            throw new ControllerException("No output file specified");
+            throw new ControllerException("缺输出档");
 
         varList = (VariableFormat[])command.getArg();
         StringBuilder line = new StringBuilder("|");
@@ -616,7 +616,7 @@ public class HackController
     // Executes the controller's output command.
     private void doOutputCommand() throws ControllerException, VariableException {
         if (output == null)
-            throw new ControllerException("No output file specified");
+            throw new ControllerException("缺输出档");
 
         StringBuilder line = new StringBuilder("|");
 
@@ -628,7 +628,7 @@ public class HackController
                 try {
                     numValue = Integer.parseInt(value);
                 } catch (NumberFormatException nfe) {
-                    throw new VariableException("Variable is not numeric", aVarList.varName);
+                    throw new VariableException("非数值变量", aVarList.varName);
                 }
                 if (aVarList.format == VariableFormat.HEX_FORMAT)
                     value = Conversions.decimalToHex(numValue, 4);
@@ -724,12 +724,12 @@ public class HackController
                 if (!compareLineWithTemplate(line, compareLine)) {
                     comparisonFailed = true;
                     comparisonFailureLine = compareLinesCounter;
-                    displayMessage("Comparison failure at line " + comparisonFailureLine,
+                    displayMessage("比异于行" + comparisonFailureLine,
                                        true);
                     stopMode();
                 }
             } catch (IOException ioe) {
-                throw new ControllerException("Could not read comparison file");
+                throw new ControllerException("未能读比档");
             }
         }
     }
@@ -755,7 +755,7 @@ public class HackController
         }
 
         if (displayMessage)
-            displayMessage("New script loaded: " + file.getPath(), false);
+            displayMessage("载入新剧本:" + file.getPath(), false);
     }
 
     // Resets the output file.
@@ -766,7 +766,7 @@ public class HackController
             if (gui != null)
                 gui.setCurrentOutputLine(-1);
         } catch (IOException ioe) {
-            throw new ControllerException("Could not create output file " + currentOutputName);
+            throw new ControllerException("未能造输出单" + currentOutputName);
         }
 
         if (gui != null)
@@ -782,7 +782,7 @@ public class HackController
             if (gui != null)
                 gui.setCurrentComparisonLine(-1);
         } catch (IOException ioe) {
-            throw new ControllerException("Could not open comparison file " +
+            throw new ControllerException("未能开比档" +
                                           currentComparisonName);
         }
     }
@@ -973,7 +973,7 @@ public class HackController
                     stopMode();
                     break;
                 case ControllerEvent.REWIND:
-                    displayMessage("Script restarted", false);
+                    displayMessage("剧本重启完", false);
                     rewind();
                     break;
                 case ControllerEvent.SPEED_CHANGE:
@@ -1025,7 +1025,7 @@ public class HackController
                     simulator.loadProgram();
                     break;
                 case ControllerEvent.HALT_PROGRAM:
-                    displayMessage("End of program", false);
+                    displayMessage("程终", false);
                     programHalted = true;
                     if (fastForwardRunning)
                         stopMode();
@@ -1100,7 +1100,7 @@ public class HackController
     private class FastForwardTask implements Runnable {
         public synchronized void run() {
             try {
-                System.runFinalization();
+                // System.runFinalization();
                 System.gc();
                 wait(300);
             } catch (InterruptedException ie) {
